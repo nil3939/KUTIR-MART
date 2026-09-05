@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us - KUTIR MART</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            kutir: {
+              green: '#003d29',
+              greenDark: '#00291b',
+              greenLight: '#00583e',
+              mint: '#d2f7ec',
+              charcoal: '#231f1e',
+              smoke: '#f5f6f6',
+              linen: '#f2e4d9',
+              rose: '#f9dcdc'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="css/custom.css" />
+</head>
+<body class="text-kutir-charcoal bg-white antialiased selection:bg-kutir-mint selection:text-kutir-green">
+
+  <!-- ================= TOP BAR ================= -->
+  <div class="bg-kutir-green text-white text-xs py-2 px-4 border-b border-white/10">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-2">
+        <i class="fa-solid fa-phone text-[11px] text-kutir-mint"></i>
+        <span class="font-medium">+880 1700-000000</span>
+      </div>
+      <div class="hidden md:flex items-center gap-2">
+        <span>Customer Support Team Available 24/7 for Inquiries</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="auth.html?mode=signin" class="hover:text-kutir-mint">Sign In</a>
+        <span>/</span>
+        <a href="auth.html?mode=signup" class="hover:text-kutir-mint">Register</a>
+        <span>|</span>
+        <a href="admin.html" class="bg-white/15 px-3 py-0.5 rounded-full text-[11px] font-semibold hover:bg-white hover:text-kutir-green">Admin</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= HEADER ================= -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+      <a href="index.html" class="flex items-center gap-2.5">
+        <div class="w-10 h-10 rounded-2xl bg-kutir-green flex items-center justify-center text-white text-lg">
+          <i class="fa-solid fa-bag-shopping"></i>
+        </div>
+        <div>
+          <span class="text-xl font-extrabold tracking-tight text-kutir-charcoal block leading-none">
+            KUTIR <span class="text-kutir-green font-normal">MART</span>
+          </span>
+          <span class="text-[9px] uppercase tracking-widest text-gray-400 font-semibold block mt-0.5">Heritage & Lifestyle</span>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-6 text-sm font-semibold text-kutir-charcoal">
+        <a href="index.html" class="hover:text-kutir-green">Home</a>
+        <a href="shop.html" class="hover:text-kutir-green">Shop</a>
+        <a href="about.html" class="hover:text-kutir-green">About</a>
+        <a href="blog.html" class="hover:text-kutir-green">Blog</a>
+        <a href="contact.html" class="text-kutir-green font-bold border-b-2 border-kutir-green pb-0.5">Contact</a>
+        <button onclick="window.kutirTracking.open()" class="text-xs text-kutir-green font-bold bg-kutir-mint/60 px-3 py-1.5 rounded-full">
+          <i class="fa-solid fa-location-dot"></i> Track
+        </button>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <div id="header-auth-container"></div>
+        <button onclick="window.kutirApp.openCart()" class="flex items-center gap-2.5 bg-kutir-green hover:bg-black text-white px-4 py-2 rounded-full font-semibold text-xs shadow-sm">
+          <i class="fa-solid fa-cart-shopping text-sm"></i>
+          <span id="cart-badge-count" class="bg-amber-400 text-black text-[10px] font-bold px-1.5 py-0.2 rounded-full">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= BANNER ================= -->
+  <section class="bg-[#fcfbf7] border-b border-gray-100 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-xl mx-auto space-y-3">
+        <span class="px-3 py-1 rounded-full bg-kutir-mint text-kutir-green font-bold text-xs">Customer Help & Care</span>
+        <h1 class="text-3xl sm:text-4xl font-black text-kutir-charcoal tracking-tight">We're always here to help you.</h1>
+        <p class="text-xs sm:text-sm text-gray-500">Have a question about an order, wholesale inquiry, or artisan collaboration? Reach out anytime.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT MAIN ================= -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        
+        <!-- Left: Form -->
+        <div class="lg:col-span-7 bg-white p-8 rounded-3xl border border-gray-200/90 shadow-xs">
+          <h3 class="text-xl font-bold text-kutir-charcoal mb-1">Send us a message</h3>
+          <p class="text-xs text-gray-500 mb-6">Fill out the form below and our team will get back to you within 2-4 hours.</p>
+
+          <form id="contact-form" onsubmit="handleContactSubmit(event)" class="space-y-4 text-xs">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block font-bold text-gray-700 mb-1">Your Name</label>
+                <input type="text" id="contact-name" placeholder="Jerry" class="w-full p-3 rounded-2xl border border-gray-200 focus:outline-none focus:border-kutir-green" required />
+              </div>
+              <div>
+                <label class="block font-bold text-gray-700 mb-1">Email Address</label>
+                <input type="email" id="contact-email" placeholder="jerry@example.com" class="w-full p-3 rounded-2xl border border-gray-200 focus:outline-none focus:border-kutir-green" required />
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block font-bold text-gray-700 mb-1">Phone Number</label>
+                <input type="text" id="contact-phone" placeholder="+880 1712-345678" class="w-full p-3 rounded-2xl border border-gray-200 focus:outline-none focus:border-kutir-green" />
+              </div>
+              <div>
+                <label class="block font-bold text-gray-700 mb-1">Inquiry Type</label>
+                <select id="contact-type" class="w-full p-3 rounded-2xl border border-gray-200 focus:outline-none focus:border-kutir-green bg-white cursor-pointer">
+                  <option value="Order Tracking & Status">Order Tracking & Status</option>
+                  <option value="Returns & Refunds">Returns & Refunds</option>
+                  <option value="Product Details & Warranty">Product Details & Warranty</option>
+                  <option value="Wholesale & Bulk Orders">Wholesale & Bulk Orders</option>
+                  <option value="Artisan Partnership">Artisan Partnership</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label class="block font-bold text-gray-700 mb-1">Your Message</label>
+              <textarea id="contact-message" rows="5" placeholder="How can our support team assist you today?" class="w-full p-3 rounded-2xl border border-gray-200 focus:outline-none focus:border-kutir-green" required></textarea>
+            </div>
+
+            <button type="submit" class="px-8 py-3.5 bg-kutir-green hover:bg-black text-white rounded-full font-bold text-xs transition shadow-md flex items-center gap-2">
+              <span>Send Message</span>
+              <i class="fa-solid fa-paper-plane text-[10px]"></i>
+            </button>
+          </form>
+
+          <!-- Success Alert -->
+          <div id="contact-success-box" class="hidden mt-6 p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-800">
+            <i class="fa-solid fa-circle-check text-base mr-1.5 text-emerald-600"></i>
+            <span id="contact-success-msg">Message dispatched successfully! Ticket ID: #TK-8421</span>
+          </div>
+        </div>
+
+        <!-- Right: Contact Cards & Map Preview -->
+        <div class="lg:col-span-5 space-y-6">
+          <!-- Card 1: Phone -->
+          <div class="p-6 rounded-3xl bg-kutir-smoke border border-gray-100 flex items-start gap-4">
+            <div class="w-12 h-12 rounded-2xl bg-kutir-mint text-kutir-green flex items-center justify-center text-lg flex-shrink-0">
+              <i class="fa-solid fa-phone"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-sm text-kutir-charcoal">Call Us Directly</h4>
+              <p class="text-xs text-gray-500 mt-0.5">Mon - Sat: 9:00 AM - 10:00 PM</p>
+              <p class="font-extrabold text-sm text-kutir-green mt-1">+880 1700-000000 / +880 2-9876543</p>
+            </div>
+          </div>
+
+          <!-- Card 2: Email -->
+          <div class="p-6 rounded-3xl bg-kutir-smoke border border-gray-100 flex items-start gap-4">
+            <div class="w-12 h-12 rounded-2xl bg-kutir-mint text-kutir-green flex items-center justify-center text-lg flex-shrink-0">
+              <i class="fa-solid fa-envelope"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-sm text-kutir-charcoal">Email Support</h4>
+              <p class="text-xs text-gray-500 mt-0.5">Average response time: under 2 hours</p>
+              <p class="font-extrabold text-sm text-kutir-green mt-1">support@kutirmart.com</p>
+            </div>
+          </div>
+
+          <!-- Card 3: Physical Address -->
+          <div class="p-6 rounded-3xl bg-kutir-smoke border border-gray-100 flex items-start gap-4">
+            <div class="w-12 h-12 rounded-2xl bg-kutir-mint text-kutir-green flex items-center justify-center text-lg flex-shrink-0">
+              <i class="fa-solid fa-location-dot"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-sm text-kutir-charcoal">Flagship Experience Center</h4>
+              <p class="text-xs text-gray-500 mt-0.5">House 42, Road 11, Block D, Banani</p>
+              <p class="text-xs text-gray-500">Dhaka - 1213, Bangladesh</p>
+              <p class="text-[11px] text-kutir-green font-bold mt-1">Open 10:00 AM - 8:30 PM Daily</p>
+            </div>
+          </div>
+
+          <!-- Map visual placeholder -->
+          <div class="rounded-3xl overflow-hidden border border-gray-200 relative h-48 bg-gray-100 flex items-center justify-center">
+            <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&auto=format&fit=crop&q=80" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-black/30 backdrop-blur-2xs flex items-center justify-center">
+              <div class="bg-white py-2 px-4 rounded-full text-xs font-bold text-kutir-green shadow-xl flex items-center gap-2">
+                <i class="fa-solid fa-map-pin text-rose-500"></i>
+                <span>Banani Showroom, Dhaka</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAQ SECTION ================= -->
+  <section class="py-16 bg-[#fafafa] border-t border-gray-100">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-kutir-charcoal">Frequently Asked Questions</h2>
+        <p class="text-xs text-gray-500 mt-1">Quick answers to common questions about shopping with Kutir Mart</p>
+      </div>
+
+      <div class="space-y-3 text-xs">
+        <details class="bg-white p-4 rounded-2xl border border-gray-200 shadow-xs cursor-pointer group">
+          <summary class="font-bold text-sm text-kutir-charcoal flex justify-between items-center">
+            <span>How fast is delivery across Bangladesh?</span>
+            <i class="fa-solid fa-chevron-down text-xs text-gray-400 group-open:rotate-180 transition"></i>
+          </summary>
+          <p class="text-gray-500 mt-2 leading-relaxed">
+            Within Dhaka Metro, deliveries arrive in 24 hours (with same-day options available for select items). For Chittagong, Sylhet, and other districts nationwide, express courier delivery takes 48 to 72 hours.
+          </p>
+        </details>
+
+        <details class="bg-white p-4 rounded-2xl border border-gray-200 shadow-xs cursor-pointer group">
+          <summary class="font-bold text-sm text-kutir-charcoal flex justify-between items-center">
+            <span>What payment methods are supported?</span>
+            <i class="fa-solid fa-chevron-down text-xs text-gray-400 group-open:rotate-180 transition"></i>
+          </summary>
+          <p class="text-gray-500 mt-2 leading-relaxed">
+            We accept bKash, Nagad, Rocket, Visa, Mastercard, American Express, and Cash on Delivery (COD). All online card transactions are protected with 256-bit SSL encryption.
+          </p>
+        </details>
+
+        <details class="bg-white p-4 rounded-2xl border border-gray-200 shadow-xs cursor-pointer group">
+          <summary class="font-bold text-sm text-kutir-charcoal flex justify-between items-center">
+            <span>What is your return & exchange policy?</span>
+            <i class="fa-solid fa-chevron-down text-xs text-gray-400 group-open:rotate-180 transition"></i>
+          </summary>
+          <p class="text-gray-500 mt-2 leading-relaxed">
+            We provide a 7-day hassle-free replacement or refund guarantee on all non-perishable goods if there are defects or damages during transit.
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+    <!-- ================= MASTER FOOTER (MUSE SHOPCART 5-COLUMN) ================= -->
+  <footer class="bg-white border-t border-gray-200 pt-16 pb-12 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 pb-12 border-b border-gray-100">
+        <!-- Col 1: Brand Info -->
+        <div class="lg:col-span-2 space-y-4">
+          <a href="index.html" class="flex items-center gap-2.5">
+            <div class="w-8 h-8 rounded-xl bg-kutir-green flex items-center justify-center text-white text-base">
+              <i class="fa-solid fa-bag-shopping"></i>
+            </div>
+            <span class="text-lg font-extrabold tracking-tight text-kutir-charcoal">
+              KUTIR <span class="text-kutir-green font-normal">MART</span>
+            </span>
+          </a>
+          <p class="text-gray-500 text-xs leading-relaxed max-w-sm">
+            Kutir Mart is your premier lifestyle and e-commerce destination connecting authentic artisan crafts, daily essentials, and consumer electronics.
+          </p>
+          <!-- Accepted Payments Icons -->
+          <div class="pt-2">
+            <p class="text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-2">Accepted Payments</p>
+            <div class="flex items-center gap-2 text-xl text-gray-400">
+              <i class="fa-brands fa-cc-visa hover:text-blue-600 transition" title="Visa"></i>
+              <i class="fa-brands fa-cc-mastercard hover:text-red-500 transition" title="Mastercard"></i>
+              <i class="fa-brands fa-cc-amex hover:text-sky-500 transition" title="AMEX"></i>
+              <span class="text-xs font-extrabold text-pink-600 px-1.5 py-0.5 bg-pink-50 rounded">bKash</span>
+              <span class="text-xs font-extrabold text-orange-600 px-1.5 py-0.5 bg-orange-50 rounded">Nagad</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Col 2: Department -->
+        <div>
+          <h5 class="font-bold text-sm text-kutir-charcoal mb-3">Department</h5>
+          <ul class="space-y-2 text-gray-500">
+            <li><a href="shop.html?category=tech" class="hover:text-kutir-green transition">Fashion & Tech</a></li>
+            <li><a href="shop.html?category=books" class="hover:text-kutir-green transition">Education & Books</a></li>
+            <li><a href="shop.html?category=furniture" class="hover:text-kutir-green transition">Home Furniture</a></li>
+            <li><a href="shop.html?category=sneakers" class="hover:text-kutir-green transition">Sneakers & Sports</a></li>
+            <li><a href="shop.html?category=travel" class="hover:text-kutir-green transition">Travel & Luggage</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: About Us -->
+        <div>
+          <h5 class="font-bold text-sm text-kutir-charcoal mb-3">About Us</h5>
+          <ul class="space-y-2 text-gray-500">
+            <li><a href="about.html" class="hover:text-kutir-green transition">Our Heritage</a></li>
+            <li><a href="about.html" class="hover:text-kutir-green transition">Artisan Community</a></li>
+            <li><a href="about.html" class="hover:text-kutir-green transition">Careers</a></li>
+            <li><a href="about.html" class="hover:text-kutir-green transition">Sustainability</a></li>
+            <li><a href="blog.html" class="hover:text-kutir-green transition">Press & Media</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Services -->
+        <div>
+          <h5 class="font-bold text-sm text-kutir-charcoal mb-3">Services</h5>
+          <ul class="space-y-2 text-gray-500">
+            <li><a href="shop.html?deal=true" class="hover:text-kutir-green transition">Gift Cards & Deals</a></li>
+            <li><a href="shop.html" class="hover:text-kutir-green transition">Catalog Explorer</a></li>
+            <li><a href="javascript:void(0)" onclick="window.kutirTracking ? window.kutirTracking.open() : window.location.href='index.html'" class="hover:text-kutir-green transition">Order Tracking</a></li>
+            <li><a href="contact.html" class="hover:text-kutir-green transition">Store Pickup</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 5: Help & Support -->
+        <div>
+          <h5 class="font-bold text-sm text-kutir-charcoal mb-3">Help & Support</h5>
+          <ul class="space-y-2 text-gray-500">
+            <li><a href="contact.html" class="hover:text-kutir-green transition">Kutir Help Center</a></li>
+            <li><a href="contact.html" class="hover:text-kutir-green transition">Returns & Refunds</a></li>
+            <li><a href="javascript:void(0)" onclick="window.kutirTracking ? window.kutirTracking.open() : window.location.href='index.html'" class="hover:text-kutir-green transition">Track Package</a></li>
+            <li><a href="contact.html" class="hover:text-kutir-green transition">Contact Us</a></li>
+            <li><a href="contact.html" class="hover:text-kutir-green transition">Security Safety</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Copyright Bar -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-gray-400">
+        <p>&copy; 2026 KUTIR MART. Designed in style of Muse Shopcart. All rights reserved.</p>
+        <div class="flex items-center gap-6">
+          <a href="about.html" class="hover:text-kutir-green transition">Terms of Service</a>
+          <a href="about.html" class="hover:text-kutir-green transition">Privacy Policy</a>
+          <a href="admin.html" class="font-bold text-kutir-green hover:underline transition">Admin Console</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="js/store.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/tracking.js"></script>
+  <script>
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('contact-name').value;
+      const type = document.getElementById('contact-type').value;
+      const ticketId = 'KM-TICKET-' + Math.floor(1000 + Math.random() * 9000);
+
+      document.getElementById('contact-success-msg').textContent = `Thank you, ${name}! Your inquiry regarding "${type}" was received. Your reference Ticket is ${ticketId}.`;
+      document.getElementById('contact-success-box').classList.remove('hidden');
+      document.getElementById('contact-form').reset();
+    }
+  </script>
+</body>
+</html>

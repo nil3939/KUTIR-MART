@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kutir Mart - Admin Console & Management</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            kutir: {
+              green: '#003d29',
+              greenDark: '#00291b',
+              greenLight: '#00583e',
+              mint: '#d2f7ec',
+              charcoal: '#231f1e',
+              smoke: '#f5f6f6',
+              linen: '#f2e4d9',
+              rose: '#f9dcdc'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/custom.css" />
+</head>
+<body class="bg-[#f8fafc] text-kutir-charcoal font-sans antialiased">
+
+  <!-- ================= TOP HEADER BAR ================= -->
+  <header class="bg-white border-b border-gray-200 sticky top-0 z-30 px-6 py-3.5 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <a href="index.html" class="flex items-center gap-2">
+        <div class="w-9 h-9 rounded-xl bg-kutir-green flex items-center justify-center text-white text-base">
+          <i class="fa-solid fa-bag-shopping"></i>
+        </div>
+        <div>
+          <span class="font-extrabold text-base tracking-tight text-kutir-charcoal">KUTIR <span class="text-kutir-green font-normal">ADMIN</span></span>
+          <span class="text-[10px] bg-kutir-mint text-kutir-green font-bold px-2 py-0.5 rounded-full ml-1 uppercase">v2.0</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="flex items-center gap-3">
+      <!-- Back to Customer Storefront -->
+      <a href="index.html" class="flex items-center gap-2 px-4 py-2 rounded-full border border-gray-300 hover:border-kutir-green text-xs font-bold text-gray-700 hover:text-kutir-green transition bg-white shadow-2xs">
+        <i class="fa-solid fa-arrow-left text-[11px]"></i>
+        <span>Storefront View</span>
+      </a>
+
+      <!-- Reset Demo Data -->
+      <button onclick="if(confirm('Reset all demo data (products, orders, categories) to factory defaults?')){ window.kutirStore.resetDefaults(); }" class="px-3.5 py-2 rounded-full bg-rose-50 hover:bg-rose-100 text-rose-700 text-xs font-semibold transition" title="Reset Demo Data">
+        <i class="fa-solid fa-rotate-right mr-1"></i> Reset Data
+      </button>
+
+      <!-- Admin Profile Avatar & Sign Out -->
+      <div class="flex items-center gap-2.5 pl-2 border-l border-gray-200">
+        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&auto=format&fit=crop&q=80" class="w-8 h-8 rounded-full object-cover border border-gray-300" />
+        <div class="hidden sm:block text-left leading-tight">
+          <span class="text-xs font-bold text-gray-800 block">Admin Manager</span>
+          <a href="auth.html?mode=signin" onclick="window.kutirStore.logout()" class="text-[10px] text-rose-600 hover:underline font-semibold">Sign Out</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="flex min-h-[calc(100vh-65px)]">
+    
+    <!-- ================= LEFT NAVIGATION SIDEBAR ================= -->
+    <aside class="w-64 bg-white border-r border-gray-200 p-4 flex flex-col justify-between flex-shrink-0">
+      <div class="space-y-6">
+        
+        <!-- Section: Dashboard -->
+        <div>
+          <span class="text-[10px] font-extrabold uppercase tracking-wider text-gray-400 px-3">Main Navigation</span>
+          <div class="mt-2 space-y-1">
+            <button id="admin-nav-dashboard" onclick="window.kutirAdmin.switchView('dashboard')" class="w-full flex items-center gap-3 px-4 py-3 rounded-2xl bg-kutir-green text-white font-semibold text-sm shadow-sm transition">
+              <i class="fa-solid fa-chart-pie w-4 text-center"></i>
+              <span>Dashboard</span>
+            </button>
+            <button id="admin-nav-analytics" onclick="window.kutirAdmin.switchView('analytics')" class="w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-gray-600 hover:bg-gray-100 font-medium text-sm transition">
+              <i class="fa-solid fa-chart-line w-4 text-center"></i>
+              <span>Sales & Analytics</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Section: Management -->
+        <div>
+          <span class="text-[10px] font-extrabold uppercase tracking-wider text-gray-400 px-3">Catalog & Stock</span>
+          <div class="mt-2 space-y-1">
+            <button id="admin-nav-products" onclick="window.kutirAdmin.switchView('products')" class="w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-gray-600 hover:bg-gray-100 font-medium text-sm transition">
+              <i class="fa-solid fa-box w-4 text-center"></i>
+              <span>Products</span>
+            </button>
+            <button id="admin-nav-categories" onclick="window.kutirAdmin.switchView('categories')" class="w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-gray-600 hover:bg-gray-100 font-medium text-sm transition">
+              <i class="fa-solid fa-layer-group w-4 text-center"></i>
+              <span>Categories</span>
+            </button>
+            <button id="admin-nav-inventory" onclick="window.kutirAdmin.switchView('inventory')" class="w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-gray-600 hover:bg-gray-100 font-medium text-sm transition">
+              <i class="fa-solid fa-warehouse w-4 text-center"></i>
+              <span>Inventory Control</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Section: Operations -->
+        <div>
+          <span class="text-[10px] font-extrabold uppercase tracking-wider text-gray-400 px-3">Fulfillment & Growth</span>
+          <div class="mt-2 space-y-1">
+            <button id="admin-nav-orders" onclick="window.kutirAdmin.switchView('orders')" class="w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-gray-600 hover:bg-gray-100 font-medium text-sm transition">
+              <i class="fa-solid fa-dolly w-4 text-center"></i>
+              <span>Customer Orders</span>
+            </button>
+            <button id="admin-nav-coupons" onclick="window.kutirAdmin.switchView('coupons')" class="w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-gray-600 hover:bg-gray-100 font-medium text-sm transition">
+              <i class="fa-solid fa-ticket w-4 text-center"></i>
+              <span>Discount Coupons</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Quick Storefront Link in Sidebar -->
+      <div class="p-3 bg-kutir-smoke rounded-2xl border border-gray-100 text-center">
+        <p class="text-xs font-bold text-kutir-charcoal">Live Storefront Active</p>
+        <p class="text-[11px] text-gray-500 mt-0.5">Changes sync in real-time</p>
+        <a href="index.html" class="mt-2 block w-full py-1.5 bg-kutir-green text-white rounded-xl text-xs font-semibold hover:bg-black transition">Open Shop</a>
+      </div>
+    </aside>
+
+    <!-- ================= MAIN CONTENT AREA ================= -->
+    <main class="flex-1 p-6 sm:p-8 max-w-7xl mx-auto overflow-y-auto">
+      
+      <!-- Dynamic Header -->
+      <div class="mb-8 flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <h1 id="admin-header-title" class="text-2xl sm:text-3xl font-black text-kutir-charcoal">Dashboard Overview</h1>
+          <p id="admin-header-desc" class="text-xs sm:text-sm text-gray-500 mt-1">Real-time sales performance and operations monitoring</p>
+        </div>
+      </div>
+
+      <!-- ================= 1. VIEW: DASHBOARD ================= -->
+      <div id="admin-view-dashboard" class="space-y-8">
+        
+        <!-- KPI Stat Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <!-- Card 1: Total Revenue -->
+          <div class="bg-white p-5 rounded-3xl border border-gray-200/80 shadow-xs flex items-center justify-between">
+            <div>
+              <p class="text-xs font-bold text-gray-400 uppercase tracking-wider">Total Sales</p>
+              <h3 id="kpi-revenue" class="text-2xl font-black text-kutir-charcoal mt-1">$0.00</h3>
+              <p class="text-[11px] text-emerald-600 font-semibold mt-1"><i class="fa-solid fa-arrow-trend-up"></i> +18.4% this month</p>
+            </div>
+            <div class="w-12 h-12 rounded-2xl bg-kutir-mint/60 text-kutir-green flex items-center justify-center text-xl">
+              <i class="fa-solid fa-dollar-sign"></i>
+            </div>
+          </div>
+
+          <!-- Card 2: Total Orders -->
+          <div class="bg-white p-5 rounded-3xl border border-gray-200/80 shadow-xs flex items-center justify-between">
+            <div>
+              <p class="text-xs font-bold text-gray-400 uppercase tracking-wider">Total Orders</p>
+              <h3 id="kpi-orders" class="text-2xl font-black text-kutir-charcoal mt-1">0</h3>
+              <p class="text-[11px] text-emerald-600 font-semibold mt-1"><i class="fa-solid fa-check"></i> Live customer checkouts</p>
+            </div>
+            <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl">
+              <i class="fa-solid fa-box"></i>
+            </div>
+          </div>
+
+          <!-- Card 3: Total Products -->
+          <div class="bg-white p-5 rounded-3xl border border-gray-200/80 shadow-xs flex items-center justify-between">
+            <div>
+              <p class="text-xs font-bold text-gray-400 uppercase tracking-wider">Active Products</p>
+              <h3 id="kpi-products" class="text-2xl font-black text-kutir-charcoal mt-1">0</h3>
+              <p class="text-[11px] text-gray-500 font-medium mt-1">Across 6 categories</p>
+            </div>
+            <div class="w-12 h-12 rounded-2xl bg-purple-50 text-purple-600 flex items-center justify-center text-xl">
+              <i class="fa-solid fa-layer-group"></i>
+            </div>
+          </div>
+
+          <!-- Card 4: Low Stock Alert -->
+          <div class="bg-white p-5 rounded-3xl border border-gray-200/80 shadow-xs flex items-center justify-between">
+            <div>
+              <p class="text-xs font-bold text-gray-400 uppercase tracking-wider">Low Stock Alerts</p>
+              <h3 id="kpi-low-stock" class="text-2xl font-black text-rose-600 mt-1">0</h3>
+              <p class="text-[11px] text-rose-500 font-semibold mt-1">Requires replenishment</p>
+            </div>
+            <div class="w-12 h-12 rounded-2xl bg-rose-50 text-rose-600 flex items-center justify-center text-xl">
+              <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Revenue Chart Section -->
+        <div class="bg-white p-6 rounded-3xl border border-gray-200/80 shadow-xs">
+          <div class="flex items-center justify-between mb-6">
+            <div>
+              <h3 class="font-bold text-base text-kutir-charcoal">Sales Revenue Trend</h3>
+              <p class="text-xs text-gray-400">Weekly sales momentum and order velocity</p>
+            </div>
+            <span class="text-xs font-bold text-kutir-green bg-kutir-mint/50 px-3 py-1 rounded-full">Weekly Report</span>
+          </div>
+          <div class="h-64">
+            <canvas id="salesRevenueChart"></canvas>
+          </div>
+        </div>
+
+        <!-- Recent Orders Table -->
+        <div class="bg-white p-6 rounded-3xl border border-gray-200/80 shadow-xs">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="font-bold text-base text-kutir-charcoal">Recent Customer Orders</h3>
+            <button onclick="window.kutirAdmin.switchView('orders')" class="text-xs font-bold text-kutir-green hover:underline">View All Orders &rarr;</button>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-left">
+              <thead>
+                <tr class="border-b border-gray-200 text-gray-400 uppercase text-[10px] tracking-wider font-extrabold">
+                  <th class="p-3">Order ID</th>
+                  <th class="p-3">Customer</th>
+                  <th class="p-3">Items</th>
+                  <th class="p-3">Total</th>
+                  <th class="p-3">Live Status</th>
+                  <th class="p-3 text-right">Action</th>
+                </tr>
+              </thead>
+              <tbody id="admin-recent-orders-list" class="divide-y divide-gray-100">
+                <!-- Dynamically loaded -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ================= 2. VIEW: PRODUCTS ================= -->
+      <div id="admin-view-products" class="hidden space-y-6">
+        <div class="flex items-center justify-between">
+          <div>
+            <h3 class="font-bold text-base text-kutir-charcoal">Products Catalog</h3>
+            <p class="text-xs text-gray-400">Add, edit, or adjust inventory for items on the storefront</p>
+          </div>
+          <button onclick="window.kutirAdmin.openProductModal()" class="px-5 py-2.5 bg-kutir-green hover:bg-black text-white rounded-full font-bold text-xs transition flex items-center gap-2 shadow-sm">
+            <i class="fa-solid fa-plus"></i> Add New Product
+          </button>
+        </div>
+
+        <div class="bg-white rounded-3xl border border-gray-200/80 shadow-xs overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left">
+              <thead>
+                <tr class="border-b border-gray-200 bg-gray-50/70 text-gray-400 uppercase text-[10px] tracking-wider font-extrabold">
+                  <th class="p-3.5">Product</th>
+                  <th class="p-3.5">Category</th>
+                  <th class="p-3.5">Price</th>
+                  <th class="p-3.5">Stock</th>
+                  <th class="p-3.5">Rating</th>
+                  <th class="p-3.5 text-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="admin-products-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= 3. VIEW: CATEGORIES ================= -->
+      <div id="admin-view-categories" class="hidden space-y-6">
+        <div class="flex items-center justify-between">
+          <div>
+            <h3 class="font-bold text-base text-kutir-charcoal">Categories Management</h3>
+            <p class="text-xs text-gray-400">Manage categories displayed on the navigation mega-menu & storefront pills</p>
+          </div>
+          <button onclick="window.kutirAdmin.addCategoryPrompt()" class="px-5 py-2.5 bg-kutir-green hover:bg-black text-white rounded-full font-bold text-xs transition flex items-center gap-2 shadow-sm">
+            <i class="fa-solid fa-plus"></i> Add Category
+          </button>
+        </div>
+
+        <div class="bg-white rounded-3xl border border-gray-200/80 shadow-xs overflow-hidden">
+          <table class="w-full text-left">
+            <thead>
+              <tr class="border-b border-gray-200 bg-gray-50/70 text-gray-400 uppercase text-[10px] tracking-wider font-extrabold">
+                <th class="p-3.5">Category Name</th>
+                <th class="p-3.5">Icon</th>
+                <th class="p-3.5">Stock Items</th>
+                <th class="p-3.5 text-right">Action</th>
+              </tr>
+            </thead>
+            <tbody id="admin-categories-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ================= 4. VIEW: INVENTORY ================= -->
+      <div id="admin-view-inventory" class="hidden space-y-6">
+        <div class="flex items-center justify-between">
+          <div>
+            <h3 class="font-bold text-base text-kutir-charcoal">Inventory & Restock Controls</h3>
+            <p class="text-xs text-gray-400">One-click quick adjustments to warehouse stock levels</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-3xl border border-gray-200/80 shadow-xs overflow-hidden">
+          <table class="w-full text-left">
+            <thead>
+              <tr class="border-b border-gray-200 bg-gray-50/70 text-gray-400 uppercase text-[10px] tracking-wider font-extrabold">
+                <th class="p-3.5">Product Item</th>
+                <th class="p-3.5">Current Units</th>
+                <th class="p-3.5">Status</th>
+                <th class="p-3.5">Quick Restock Adjustment</th>
+              </tr>
+            </thead>
+            <tbody id="admin-inventory-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ================= 5. VIEW: ALL ORDERS ================= -->
+      <div id="admin-view-orders" class="hidden space-y-6">
+        <div class="flex items-center justify-between">
+          <div>
+            <h3 class="font-bold text-base text-kutir-charcoal">All Orders & Shipments</h3>
+            <p class="text-xs text-gray-400">Update fulfillment status to change what customers see on their live tracker</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-3xl border border-gray-200/80 shadow-xs overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left">
+              <thead>
+                <tr class="border-b border-gray-200 bg-gray-50/70 text-gray-400 uppercase text-[10px] tracking-wider font-extrabold">
+                  <th class="p-3.5">Order ID</th>
+                  <th class="p-3.5">Date</th>
+                  <th class="p-3.5">Customer & Address</th>
+                  <th class="p-3.5">Total Amount</th>
+                  <th class="p-3.5">Order Status</th>
+                  <th class="p-3.5 text-right">Action</th>
+                </tr>
+              </thead>
+              <tbody id="admin-all-orders-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= 6. VIEW: COUPONS ================= -->
+      <div id="admin-view-coupons" class="hidden space-y-6">
+        <div class="flex items-center justify-between">
+          <div>
+            <h3 class="font-bold text-base text-kutir-charcoal">Discount Coupons & Offers</h3>
+            <p class="text-xs text-gray-400">Create promo codes that customers can apply during Cart or Checkout</p>
+          </div>
+          <button onclick="window.kutirAdmin.createCouponPrompt()" class="px-5 py-2.5 bg-kutir-green hover:bg-black text-white rounded-full font-bold text-xs transition flex items-center gap-2 shadow-sm">
+            <i class="fa-solid fa-plus"></i> Create Coupon
+          </button>
+        </div>
+
+        <div class="bg-white rounded-3xl border border-gray-200/80 shadow-xs overflow-hidden">
+          <table class="w-full text-left">
+            <thead>
+              <tr class="border-b border-gray-200 bg-gray-50/70 text-gray-400 uppercase text-[10px] tracking-wider font-extrabold">
+                <th class="p-3.5">Code</th>
+                <th class="p-3.5">Discount Value</th>
+                <th class="p-3.5">Minimum Spend</th>
+                <th class="p-3.5">Status</th>
+                <th class="p-3.5 text-right">Action</th>
+              </tr>
+            </thead>
+            <tbody id="admin-coupons-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ================= 7. VIEW: ANALYTICS ================= -->
+      <div id="admin-view-analytics" class="hidden space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-white p-6 rounded-3xl border border-gray-200/80 shadow-xs">
+            <h3 class="font-bold text-base text-kutir-charcoal mb-4">Sales by Category</h3>
+            <div id="analytics-category-breakdown"></div>
+          </div>
+
+          <div class="bg-white p-6 rounded-3xl border border-gray-200/80 shadow-xs">
+            <h3 class="font-bold text-base text-kutir-charcoal mb-2">Operations Summary</h3>
+            <p class="text-xs text-gray-500 mb-6">Real-time indicators across storage, carts, and conversions</p>
+            <div class="space-y-4">
+              <div class="p-4 rounded-2xl bg-gray-50 border border-gray-100 flex justify-between items-center text-xs">
+                <span class="font-semibold text-gray-700">Average Order Value (AOV)</span>
+                <span class="font-bold text-kutir-green text-sm">$185.00</span>
+              </div>
+              <div class="p-4 rounded-2xl bg-gray-50 border border-gray-100 flex justify-between items-center text-xs">
+                <span class="font-semibold text-gray-700">Cart Completion Rate</span>
+                <span class="font-bold text-kutir-green text-sm">76.2%</span>
+              </div>
+              <div class="p-4 rounded-2xl bg-gray-50 border border-gray-100 flex justify-between items-center text-xs">
+                <span class="font-semibold text-gray-700">Fulfillment SLA</span>
+                <span class="font-bold text-kutir-green text-sm">99.4% On-time</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- ================= ADD / EDIT PRODUCT MODAL ================= -->
+  <div id="admin-product-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
+    <div onclick="window.kutirAdmin.closeProductModal()" class="fixed inset-0 bg-black/60 backdrop-blur-sm"></div>
+    <div class="relative bg-white rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-2xl z-10 max-h-[92vh] overflow-y-auto">
+      <div class="flex items-center justify-between pb-4 border-b border-gray-100 mb-4">
+        <h3 id="admin-product-modal-title" class="font-bold text-base text-kutir-charcoal">Add New Product</h3>
+        <button onclick="window.kutirAdmin.closeProductModal()" class="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-500">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <form id="admin-product-form" onsubmit="window.kutirAdmin.saveProduct(event)" class="space-y-4 text-xs">
+        <div>
+          <label class="block font-semibold text-gray-600 mb-1">Product Title</label>
+          <input type="text" id="prod-input-title" class="w-full p-2.5 rounded-xl border border-gray-200 focus:ring-1 focus:ring-kutir-green" placeholder="e.g. Leather Chronograph Heritage Watch" required />
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-semibold text-gray-600 mb-1">Category</label>
+            <select id="prod-input-category" class="w-full p-2.5 rounded-xl border border-gray-200 focus:ring-1 focus:ring-kutir-green">
+              <option value="Tech">Tech</option>
+              <option value="Furniture">Furniture</option>
+              <option value="Hand Bag">Hand Bag</option>
+              <option value="Books">Books</option>
+              <option value="Sneakers">Sneakers</option>
+              <option value="Travel">Travel</option>
+            </select>
+          </div>
+          <div>
+            <label class="block font-semibold text-gray-600 mb-1">Brand Name</label>
+            <input type="text" id="prod-input-brand" class="w-full p-2.5 rounded-xl border border-gray-200" placeholder="e.g. Apple / Kutir Crafts" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-3 gap-3">
+          <div>
+            <label class="block font-semibold text-gray-600 mb-1">Sale Price ($)</label>
+            <input type="number" step="0.01" id="prod-input-price" class="w-full p-2.5 rounded-xl border border-gray-200" placeholder="199.00" required />
+          </div>
+          <div>
+            <label class="block font-semibold text-gray-600 mb-1">Original Price ($)</label>
+            <input type="number" step="0.01" id="prod-input-original-price" class="w-full p-2.5 rounded-xl border border-gray-200" placeholder="249.00" />
+          </div>
+          <div>
+            <label class="block font-semibold text-gray-600 mb-1">Stock Quantity</label>
+            <input type="number" id="prod-input-stock" class="w-full p-2.5 rounded-xl border border-gray-200" placeholder="25" required />
+          </div>
+        </div>
+
+        <div>
+          <label class="block font-semibold text-gray-600 mb-1">Image URL</label>
+          <input type="url" id="prod-input-image" class="w-full p-2.5 rounded-xl border border-gray-200" placeholder="https://images.unsplash.com/..." required />
+        </div>
+
+        <div>
+          <label class="block font-semibold text-gray-600 mb-1">Description</label>
+          <textarea id="prod-input-desc" rows="3" class="w-full p-2.5 rounded-xl border border-gray-200" placeholder="Product details, material, dimensions..." required></textarea>
+        </div>
+
+        <div class="flex items-center gap-6 pt-2">
+          <label class="flex items-center gap-2 cursor-pointer">
+            <input type="checkbox" id="prod-input-deal" class="rounded text-kutir-green focus:ring-kutir-green" />
+            <span class="font-semibold text-gray-700">Feature in "Today's Best Deals" Slider</span>
+          </label>
+          <label class="flex items-center gap-2 cursor-pointer">
+            <input type="checkbox" id="prod-input-popular" class="rounded text-kutir-green focus:ring-kutir-green" checked />
+            <span class="font-semibold text-gray-700">Include in "Popular Products"</span>
+          </label>
+        </div>
+
+        <div class="flex gap-3 pt-4 border-t border-gray-100">
+          <button type="button" onclick="window.kutirAdmin.closeProductModal()" class="w-1/3 py-2.5 rounded-full border border-gray-300 font-bold hover:bg-gray-50">Cancel</button>
+          <button type="submit" class="w-2/3 py-2.5 rounded-full bg-kutir-green hover:bg-black text-white font-bold transition">Save Product</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Central Store & Admin Logic -->
+  <script src="js/store.js"></script>
+  <script src="js/admin.js"></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      window.kutirAdmin.init();
+    });
+  </script>
+</body>
+</html>

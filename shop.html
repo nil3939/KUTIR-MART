@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop All Products - KUTIR MART</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            kutir: {
+              green: '#003d29',
+              greenDark: '#00291b',
+              greenLight: '#00583e',
+              mint: '#d2f7ec',
+              charcoal: '#231f1e',
+              smoke: '#f5f6f6',
+              linen: '#f2e4d9',
+              rose: '#f9dcdc'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/custom.css" />
+</head>
+<body class="text-kutir-charcoal bg-white antialiased selection:bg-kutir-mint selection:text-kutir-green">
+
+  <!-- ================= 1. TOP ANNOUNCEMENT BAR ================= -->
+  <div class="bg-kutir-green text-white text-xs py-2 px-4 border-b border-white/10">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
+      <!-- Contact -->
+      <div class="flex items-center gap-2">
+        <i class="fa-solid fa-phone text-[11px] text-kutir-mint"></i>
+        <span class="font-medium tracking-wide">+880 1700-000000</span>
+      </div>
+
+      <!-- Center Promo -->
+      <div class="hidden md:flex items-center gap-2 cursor-pointer hover:underline" onclick="window.location.href='shop.html?deal=true'">
+        <span class="font-normal opacity-90">Get 50% Off on Selected Items</span>
+        <span class="opacity-40">|</span>
+        <span class="font-bold text-kutir-mint">Shop Deals <i class="fa-solid fa-arrow-right text-[10px] ml-1"></i></span>
+      </div>
+
+      <!-- Right Controls & Auth -->
+      <div class="flex items-center gap-4 ml-auto sm:ml-0">
+        <div class="flex items-center gap-1 cursor-pointer hover:text-kutir-mint transition">
+          <span>Eng</span>
+          <i class="fa-solid fa-chevron-down text-[9px] opacity-70"></i>
+        </div>
+        <div class="flex items-center gap-1 cursor-pointer hover:text-kutir-mint transition">
+          <span>Dhaka</span>
+          <i class="fa-solid fa-chevron-down text-[9px] opacity-70"></i>
+        </div>
+
+        <span class="opacity-30">|</span>
+
+        <a href="auth.html?mode=signin" class="hover:text-kutir-mint transition font-medium">Sign In</a>
+        <span class="opacity-30">/</span>
+        <a href="auth.html?mode=signup" class="hover:text-kutir-mint transition font-medium">Register</a>
+
+        <span class="opacity-30">|</span>
+
+        <a href="admin.html" class="flex items-center gap-1.5 bg-white/15 hover:bg-white text-white hover:text-kutir-green px-3 py-1 rounded-full font-semibold transition text-[11px] shadow-xs">
+          <i class="fa-solid fa-gauge-high"></i>
+          <span>Admin</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= 2. MAIN HEADER & NAVIGATION ================= -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+      
+      <!-- Logo -->
+      <a href="index.html" class="flex items-center gap-2.5 group flex-shrink-0">
+        <div class="w-10 h-10 rounded-2xl bg-kutir-green flex items-center justify-center text-white text-lg shadow-sm group-hover:scale-105 transition">
+          <i class="fa-solid fa-bag-shopping"></i>
+        </div>
+        <div>
+          <span class="text-xl font-extrabold tracking-tight text-kutir-charcoal block leading-none">
+            KUTIR <span class="text-kutir-green font-normal">MART</span>
+          </span>
+          <span class="text-[9px] uppercase tracking-widest text-gray-400 font-semibold block mt-0.5">Heritage & Lifestyle</span>
+        </div>
+      </a>
+
+      <!-- Category Mega Menu Dropdown -->
+      <div class="relative mega-menu-trigger hidden lg:block">
+        <button class="flex items-center gap-2 text-sm font-semibold text-kutir-charcoal hover:text-kutir-green transition py-2 px-3 rounded-full hover:bg-gray-100">
+          <span>Category</span>
+          <i class="fa-solid fa-chevron-down text-[10px] text-gray-400 group-hover:rotate-180 transition"></i>
+        </button>
+        <div class="mega-menu-content absolute left-0 top-full mt-2 w-80 bg-white rounded-3xl shadow-2xl border border-gray-100 p-4 z-50">
+          <h4 class="text-xs font-bold text-gray-400 uppercase tracking-wider px-2 mb-2">Popular Categories</h4>
+          <div id="mega-menu-categories" class="space-y-1"></div>
+        </div>
+      </div>
+
+      <!-- Main Nav Links -->
+      <nav class="hidden md:flex items-center gap-6 text-sm font-semibold text-kutir-charcoal">
+        <a href="index.html" class="hover:text-kutir-green transition">Home</a>
+        <a href="shop.html" class="text-kutir-green font-bold border-b-2 border-kutir-green pb-0.5">Shop</a>
+        <a href="about.html" class="hover:text-kutir-green transition">About</a>
+        <a href="blog.html" class="hover:text-kutir-green transition">Blog</a>
+        <a href="contact.html" class="hover:text-kutir-green transition">Contact</a>
+        <button onclick="window.kutirTracking.open()" class="hover:text-kutir-green transition flex items-center gap-1.5 text-xs text-kutir-green font-bold bg-kutir-mint/60 px-3 py-1.5 rounded-full">
+          <i class="fa-solid fa-location-dot"></i> Track
+        </button>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-3">
+        <!-- Auth Profile / Sign In -->
+        <div id="header-auth-container"></div>
+
+        <!-- Wishlist -->
+        <button onclick="window.kutirAccount.open('wishlist')" class="relative p-2 rounded-full hover:bg-gray-100 transition text-kutir-charcoal">
+          <div class="w-9 h-9 rounded-full bg-kutir-smoke flex items-center justify-center text-sm">
+            <i class="fa-regular fa-heart"></i>
+          </div>
+          <span id="wishlist-badge-count" class="absolute top-1 right-1 bg-rose-500 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center hidden">0</span>
+        </button>
+
+        <!-- Cart Trigger -->
+        <button onclick="window.kutirApp.openCart()" class="flex items-center gap-2.5 bg-kutir-green hover:bg-black text-white pl-3.5 pr-4 py-2 rounded-full font-semibold transition text-xs shadow-sm">
+          <div class="relative">
+            <i class="fa-solid fa-cart-shopping text-sm"></i>
+            <span id="cart-badge-count" class="absolute -top-2 -right-2 bg-amber-400 text-kutir-charcoal text-[10px] font-black w-4 h-4 rounded-full flex items-center justify-center">0</span>
+          </div>
+          <span class="hidden sm:inline">Cart</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ================= 3. SHOP BANNER & BREADCRUMB ================= -->
+  <section class="bg-[#fcfbf7] border-b border-gray-100 py-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <!-- Breadcrumb -->
+          <div class="flex items-center gap-2 text-xs text-gray-400 mb-2">
+            <a href="index.html" class="hover:text-kutir-green">Home</a>
+            <span>/</span>
+            <span class="text-kutir-charcoal font-semibold">Shop Catalog</span>
+          </div>
+          <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-kutir-charcoal">
+            Explore All Products
+          </h1>
+          <p class="text-xs sm:text-sm text-gray-500 mt-1">Discover handcrafted goods, high-tech gear, travel accessories, and lifestyle home goods.</p>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <span class="text-xs bg-kutir-mint text-kutir-green font-bold px-3 py-1.5 rounded-full">
+            <i class="fa-solid fa-truck-fast mr-1"></i> Fast Delivery Nationwide
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 4. SHOP MAIN CONTENT (SIDEBAR + PRODUCT GRID) ================= -->
+  <section class="py-12 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- LEFT FILTER SIDEBAR -->
+        <aside class="lg:col-span-3 bg-white p-6 rounded-3xl border border-gray-200/90 shadow-xs space-y-6">
+          <div class="flex items-center justify-between pb-3 border-b border-gray-100">
+            <h3 class="font-extrabold text-sm text-kutir-charcoal flex items-center gap-2">
+              <i class="fa-solid fa-sliders text-kutir-green"></i>
+              <span>Filters</span>
+            </h3>
+            <button onclick="window.kutirShop.resetAllFilters()" class="text-xs text-rose-600 hover:underline font-semibold">Reset All</button>
+          </div>
+
+          <!-- Search filter inside shop -->
+          <div>
+            <label class="block text-xs font-bold text-gray-700 mb-2">Search Catalog</label>
+            <div class="relative">
+              <input 
+                type="text" 
+                id="shop-search-input" 
+                placeholder="Search by name, spec..." 
+                class="w-full pl-9 pr-3 py-2 rounded-xl border border-gray-200 text-xs focus:outline-none focus:border-kutir-green"
+              />
+              <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
+            </div>
+          </div>
+
+          <!-- Category filter list -->
+          <div>
+            <h4 class="text-xs font-bold text-gray-700 uppercase tracking-wider mb-2.5">Categories</h4>
+            <div id="shop-categories-filter" class="space-y-1">
+              <!-- Rendered by shop.js -->
+            </div>
+          </div>
+
+          <!-- Price Range Slider -->
+          <div class="border-t border-gray-100 pt-5">
+            <div class="flex items-center justify-between mb-2">
+              <h4 class="text-xs font-bold text-gray-700 uppercase tracking-wider">Max Price</h4>
+              <span id="shop-price-display" class="text-xs font-extrabold text-kutir-green">$1000</span>
+            </div>
+            <input 
+              type="range" 
+              id="shop-price-slider" 
+              min="20" 
+              max="1000" 
+              step="10" 
+              value="1000"
+              class="w-full accent-kutir-green cursor-pointer"
+            />
+            <div class="flex justify-between text-[10px] text-gray-400 mt-1">
+              <span>$20</span>
+              <span>$500</span>
+              <span>$1000+</span>
+            </div>
+          </div>
+
+          <!-- Brands Filter -->
+          <div class="border-t border-gray-100 pt-5">
+            <h4 class="text-xs font-bold text-gray-700 uppercase tracking-wider mb-2.5">Brands</h4>
+            <div id="shop-brands-filter" class="space-y-1 max-h-40 overflow-y-auto pr-1">
+              <!-- Rendered by shop.js -->
+            </div>
+          </div>
+
+          <!-- Rating Filter -->
+          <div class="border-t border-gray-100 pt-5">
+            <h4 class="text-xs font-bold text-gray-700 uppercase tracking-wider mb-2.5">Customer Rating</h4>
+            <div class="space-y-1.5 text-xs">
+              <label class="flex items-center gap-2 cursor-pointer group" onclick="window.kutirShop.setRatingFilter(4.5)">
+                <input type="radio" name="rating-filter" class="text-kutir-green focus:ring-kutir-green" />
+                <div class="flex text-amber-400 text-[11px]"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></div>
+                <span class="text-gray-600 font-medium text-[11px]">4.5 & Above</span>
+              </label>
+              <label class="flex items-center gap-2 cursor-pointer group" onclick="window.kutirShop.setRatingFilter(4.0)">
+                <input type="radio" name="rating-filter" class="text-kutir-green focus:ring-kutir-green" />
+                <div class="flex text-amber-400 text-[11px]"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></div>
+                <span class="text-gray-600 font-medium text-[11px]">4.0 & Above</span>
+              </label>
+              <label class="flex items-center gap-2 cursor-pointer group" onclick="window.kutirShop.setRatingFilter(0)">
+                <input type="radio" name="rating-filter" checked class="text-kutir-green focus:ring-kutir-green" />
+                <span class="text-gray-600 font-medium text-[11px]">All Ratings</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Availability & Deals Toggle -->
+          <div class="border-t border-gray-100 pt-5 space-y-2">
+            <label class="flex items-center justify-between cursor-pointer">
+              <span class="text-xs font-medium text-gray-700">In Stock Only</span>
+              <input type="checkbox" id="filter-in-stock" onchange="window.kutirShop.toggleStockOnly(event)" class="rounded text-kutir-green focus:ring-kutir-green" />
+            </label>
+            <label class="flex items-center justify-between cursor-pointer">
+              <span class="text-xs font-medium text-gray-700">Today's Deals Only</span>
+              <input type="checkbox" id="filter-deals-only" onchange="window.kutirShop.toggleDealsOnly(event)" class="rounded text-kutir-green focus:ring-kutir-green" />
+            </label>
+          </div>
+        </aside>
+
+        <!-- RIGHT PRODUCTS MAIN AREA -->
+        <main class="lg:col-span-9">
+          
+          <!-- Top Controls Bar -->
+          <div class="flex flex-wrap items-center justify-between gap-4 mb-6 p-4 rounded-2xl bg-kutir-smoke border border-gray-100">
+            <span id="shop-product-count" class="text-xs font-bold text-gray-700">Loading products...</span>
+
+            <div class="flex items-center gap-3">
+              <!-- View Mode Toggles -->
+              <div class="flex items-center gap-1 p-1 bg-white rounded-xl border border-gray-200">
+                <button id="view-mode-grid" onclick="window.kutirShop.setViewMode('grid')" class="w-8 h-8 rounded-lg bg-kutir-green text-white flex items-center justify-center text-xs">
+                  <i class="fa-solid fa-table-cells-large"></i>
+                </button>
+                <button id="view-mode-list" onclick="window.kutirShop.setViewMode('list')" class="w-8 h-8 rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200 flex items-center justify-center text-xs">
+                  <i class="fa-solid fa-list"></i>
+                </button>
+              </div>
+
+              <!-- Sort Dropdown -->
+              <select id="shop-sort-select" class="text-xs font-semibold py-2 px-3.5 rounded-full border border-gray-300 bg-white text-gray-700 focus:outline-none focus:border-kutir-green cursor-pointer">
+                <option value="featured">Sort by: Featured</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+                <option value="rating">Highest Rated</option>
+                <option value="newest">Newest Arrivals</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Active Filter Badges Chips -->
+          <div id="active-filter-chips"></div>
+
+          <!-- Products Output Container -->
+          <div id="shop-products-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Dynamically populated by shop.js -->
+          </div>
+
+        </main>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 5. FOOTER ================= -->
+    <!-- ================= MASTER FOOTER (MUSE SHOPCART 5-COLUMN) ================= -->
+  <footer class="bg-white border-t border-gray-200 pt-16 pb-12 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 pb-12 border-b border-gray-100">
+        <!-- Col 1: Brand Info -->
+        <div class="lg:col-span-2 space-y-4">
+          <a href="index.html" class="flex items-center gap-2.5">
+            <div class="w-8 h-8 rounded-xl bg-kutir-green flex items-center justify-center text-white text-base">
+              <i class="fa-solid fa-bag-shopping"></i>
+            </div>
+            <span class="text-lg font-extrabold tracking-tight text-kutir-charcoal">
+              KUTIR <span class="text-kutir-green font-normal">MART</span>
+            </span>
+          </a>
+          <p class="text-gray-500 text-xs leading-relaxed max-w-sm">
+            Kutir Mart is your premier lifestyle and e-commerce destination connecting authentic artisan crafts, daily essentials, and consumer electronics.
+          </p>
+          <!-- Accepted Payments Icons -->
+          <div class="pt-2">
+            <p class="text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-2">Accepted Payments</p>
+            <div class="flex items-center gap-2 text-xl text-gray-400">
+              <i class="fa-brands fa-cc-visa hover:text-blue-600 transition" title="Visa"></i>
+              <i class="fa-brands fa-cc-mastercard hover:text-red-500 transition" title="Mastercard"></i>
+              <i class="fa-brands fa-cc-amex hover:text-sky-500 transition" title="AMEX"></i>
+              <span class="text-xs font-extrabold text-pink-600 px-1.5 py-0.5 bg-pink-50 rounded">bKash</span>
+              <span class="text-xs font-extrabold text-orange-600 px-1.5 py-0.5 bg-orange-50 rounded">Nagad</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Col 2: Department -->
+        <div>
+          <h5 class="font-bold text-sm text-kutir-charcoal mb-3">Department</h5>
+          <ul class="space-y-2 text-gray-500">
+            <li><a href="shop.html?category=tech" class="hover:text-kutir-green transition">Fashion & Tech</a></li>
+            <li><a href="shop.html?category=books" class="hover:text-kutir-green transition">Education & Books</a></li>
+            <li><a href="shop.html?category=furniture" class="hover:text-kutir-green transition">Home Furniture</a></li>
+            <li><a href="shop.html?category=sneakers" class="hover:text-kutir-green transition">Sneakers & Sports</a></li>
+            <li><a href="shop.html?category=travel" class="hover:text-kutir-green transition">Travel & Luggage</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: About Us -->
+        <div>
+          <h5 class="font-bold text-sm text-kutir-charcoal mb-3">About Us</h5>
+          <ul class="space-y-2 text-gray-500">
+            <li><a href="about.html" class="hover:text-kutir-green transition">Our Heritage</a></li>
+            <li><a href="about.html" class="hover:text-kutir-green transition">Artisan Community</a></li>
+            <li><a href="about.html" class="hover:text-kutir-green transition">Careers</a></li>
+            <li><a href="about.html" class="hover:text-kutir-green transition">Sustainability</a></li>
+            <li><a href="blog.html" class="hover:text-kutir-green transition">Press & Media</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Services -->
+        <div>
+          <h5 class="font-bold text-sm text-kutir-charcoal mb-3">Services</h5>
+          <ul class="space-y-2 text-gray-500">
+            <li><a href="shop.html?deal=true" class="hover:text-kutir-green transition">Gift Cards & Deals</a></li>
+            <li><a href="shop.html" class="hover:text-kutir-green transition">Catalog Explorer</a></li>
+            <li><a href="javascript:void(0)" onclick="window.kutirTracking ? window.kutirTracking.open() : window.location.href='index.html'" class="hover:text-kutir-green transition">Order Tracking</a></li>
+            <li><a href="contact.html" class="hover:text-kutir-green transition">Store Pickup</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 5: Help & Support -->
+        <div>
+          <h5 class="font-bold text-sm text-kutir-charcoal mb-3">Help & Support</h5>
+          <ul class="space-y-2 text-gray-500">
+            <li><a href="contact.html" class="hover:text-kutir-green transition">Kutir Help Center</a></li>
+            <li><a href="contact.html" class="hover:text-kutir-green transition">Returns & Refunds</a></li>
+            <li><a href="javascript:void(0)" onclick="window.kutirTracking ? window.kutirTracking.open() : window.location.href='index.html'" class="hover:text-kutir-green transition">Track Package</a></li>
+            <li><a href="contact.html" class="hover:text-kutir-green transition">Contact Us</a></li>
+            <li><a href="contact.html" class="hover:text-kutir-green transition">Security Safety</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Copyright Bar -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-gray-400">
+        <p>&copy; 2026 KUTIR MART. Designed in style of Muse Shopcart. All rights reserved.</p>
+        <div class="flex items-center gap-6">
+          <a href="about.html" class="hover:text-kutir-green transition">Terms of Service</a>
+          <a href="about.html" class="hover:text-kutir-green transition">Privacy Policy</a>
+          <a href="admin.html" class="font-bold text-kutir-green hover:underline transition">Admin Console</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ================= MODALS & DRAWERS ================= -->
+  <!-- Cart Drawer -->
+  <div id="cart-drawer-backdrop" onclick="window.kutirApp.closeCart()" class="fixed inset-0 bg-black/50 backdrop-blur-xs z-50 hidden transition-opacity"></div>
+  <aside id="cart-drawer" class="fixed top-0 right-0 h-full w-full sm:w-[420px] bg-white z-50 shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col">
+    <div class="p-5 border-b border-gray-100 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <i class="fa-solid fa-cart-shopping text-kutir-green"></i>
+        <h3 class="font-bold text-base text-kutir-charcoal">Your Cart (<span id="cart-drawer-count">0</span>)</h3>
+      </div>
+      <button onclick="window.kutirApp.closeCart()" class="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-500">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <div id="cart-drawer-items" class="flex-1 overflow-y-auto p-5"></div>
+    <div class="p-5 border-t border-gray-100 bg-gray-50/70 space-y-4">
+      <div class="flex items-center justify-between text-sm">
+        <span class="text-gray-500 font-medium">Subtotal</span>
+        <span id="cart-drawer-subtotal" class="font-extrabold text-base text-kutir-green">$0.00</span>
+      </div>
+      <button onclick="window.kutirCheckout.open()" class="w-full py-3.5 bg-kutir-green hover:bg-black text-white rounded-full font-bold text-sm transition shadow-lg flex items-center justify-center gap-2">
+        <span>Proceed to Checkout</span>
+        <i class="fa-solid fa-arrow-right text-xs"></i>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Quick View Modal -->
+  <div id="quick-view-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
+    <div onclick="window.kutirApp.closeQuickView()" class="fixed inset-0 bg-black/60 backdrop-blur-sm"></div>
+    <div class="relative bg-white rounded-3xl max-w-3xl w-full p-6 sm:p-8 shadow-2xl z-10 overflow-hidden max-h-[90vh] overflow-y-auto">
+      <button onclick="window.kutirApp.closeQuickView()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-500 z-10">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="aspect-square rounded-2xl bg-kutir-smoke flex items-center justify-center p-4 overflow-hidden">
+          <img id="qv-image" src="" class="w-full h-full object-cover rounded-xl" />
+        </div>
+        <div class="flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-2 mb-2">
+              <span id="qv-category" class="px-2.5 py-0.5 rounded-full bg-kutir-mint text-kutir-green font-bold text-[10px] uppercase">Category</span>
+              <span id="qv-brand" class="text-xs text-gray-400 font-medium">Brand</span>
+            </div>
+            <h3 id="qv-title" class="text-xl font-bold text-kutir-charcoal leading-snug mb-2">Product Title</h3>
+            <div class="flex items-baseline gap-3 mb-4">
+              <span id="qv-price" class="text-2xl font-black text-kutir-green">$0.00</span>
+              <span id="qv-original-price" class="text-sm line-through text-gray-400 font-normal"></span>
+              <span id="qv-stock" class="ml-auto text-xs font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">In Stock</span>
+            </div>
+            <p id="qv-desc" class="text-xs text-gray-600 leading-relaxed mb-4">Description</p>
+            <ul id="qv-specs-list" class="space-y-1.5 mb-6 border-t border-b border-gray-100 py-3"></ul>
+          </div>
+          <div class="space-y-3 pt-4">
+            <div class="flex items-center gap-3">
+              <span class="text-xs font-bold text-gray-500">Quantity:</span>
+              <div class="flex items-center border border-gray-300 rounded-full bg-white px-3 py-1">
+                <button onclick="window.kutirApp.changeQuickViewQty(-1)" class="text-gray-500 hover:text-black font-bold text-sm px-1">-</button>
+                <span id="qv-qty-input" class="text-xs font-bold px-3">1</span>
+                <button onclick="window.kutirApp.changeQuickViewQty(1)" class="text-gray-500 hover:text-black font-bold text-sm px-1">+</button>
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+              <button onclick="window.kutirApp.addQuickViewToCart()" class="w-full py-3 rounded-full bg-kutir-green hover:bg-black text-white font-bold text-xs transition flex items-center justify-center gap-1.5">
+                <i class="fa-solid fa-cart-plus"></i> Add to Cart
+              </button>
+              <button onclick="window.kutirApp.addQuickViewToCart(); window.kutirCheckout.open();" class="w-full py-3 rounded-full border border-kutir-charcoal text-kutir-charcoal hover:bg-kutir-charcoal hover:text-white font-bold text-xs transition">
+                Buy Now
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Account Portal Modal -->
+  <div id="account-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
+    <div onclick="window.kutirAccount.close()" class="fixed inset-0 bg-black/60 backdrop-blur-sm"></div>
+    <div class="relative bg-white rounded-3xl max-w-4xl w-full p-6 sm:p-8 shadow-2xl z-10 max-h-[90vh] flex flex-col overflow-hidden">
+      <div class="flex items-center justify-between pb-4 border-b border-gray-100">
+        <div class="flex items-center gap-3"><img id="user-profile-avatar" src="assets/jerry.png" class="w-10 h-10 rounded-full object-contain bg-amber-50 p-1 border border-gray-200" /><div><h3 class="font-bold text-base text-kutir-charcoal">Customer Account</h3><p class="text-xs text-gray-400">Manage your profile, tracked orders, and addresses</p></div></div>
+        <button onclick="window.kutirAccount.close()" class="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-500"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="flex-1 overflow-hidden grid grid-cols-1 md:grid-cols-12 gap-6 pt-4">
+        <div class="md:col-span-4 space-y-1.5 border-r border-gray-100 pr-4">
+          <button id="acc-tab-orders" onclick="window.kutirAccount.switchTab('orders')" class="w-full text-left px-4 py-2.5 rounded-xl font-semibold text-sm bg-kutir-green text-white flex items-center gap-3"><i class="fa-solid fa-box-archive text-xs"></i> Orders</button>
+          <button id="acc-tab-wishlist" onclick="window.kutirAccount.switchTab('wishlist')" class="w-full text-left px-4 py-2.5 rounded-xl font-medium text-sm text-gray-600 hover:bg-gray-100 flex items-center gap-3"><i class="fa-solid fa-heart text-xs"></i> Wishlist</button>
+          <button id="acc-tab-addresses" onclick="window.kutirAccount.switchTab('addresses')" class="w-full text-left px-4 py-2.5 rounded-xl font-medium text-sm text-gray-600 hover:bg-gray-100 flex items-center gap-3"><i class="fa-solid fa-map-location-dot text-xs"></i> Addresses</button>
+          <button id="acc-tab-profile" onclick="window.kutirAccount.switchTab('profile')" class="w-full text-left px-4 py-2.5 rounded-xl font-medium text-sm text-gray-600 hover:bg-gray-100 flex items-center gap-3"><i class="fa-solid fa-id-card text-xs"></i> Profile</button>
+        </div>
+        <div class="md:col-span-8 overflow-y-auto max-h-[60vh] pr-2">
+          <div id="acc-content-orders"><div id="account-orders-list"></div></div>
+          <div id="acc-content-wishlist" class="hidden"><div id="account-wishlist-grid" class="grid grid-cols-2 gap-4"></div></div>
+          <div id="acc-content-addresses" class="hidden"><div id="account-addresses-list"></div></div>
+          <div id="acc-content-profile" class="hidden"><p class="text-xs text-gray-500">Profile managed via store session.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Multi-Step Checkout Modal -->
+  <div id="checkout-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
+    <div onclick="window.kutirCheckout.close()" class="fixed inset-0 bg-black/60 backdrop-blur-sm"></div>
+    <div class="relative bg-white rounded-3xl max-w-3xl w-full p-6 sm:p-8 shadow-2xl z-10 max-h-[92vh] overflow-y-auto">
+      <div class="flex items-center justify-between pb-4 border-b border-gray-100 mb-6">
+        <h3 class="font-black text-lg text-kutir-charcoal flex items-center gap-2">
+          <i class="fa-solid fa-shield-halved text-kutir-green"></i>
+          <span>Secure Checkout</span>
+        </h3>
+        <button onclick="window.kutirCheckout.close()" class="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-500"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+        <div class="md:col-span-7">
+          <div id="checkout-step-1-content">
+            <h4 class="font-bold text-sm text-kutir-charcoal mb-2">Shipping Information</h4>
+            <div id="saved-addresses-list" class="mb-4"></div>
+            <div class="space-y-3">
+              <div class="grid grid-cols-2 gap-3">
+                <input type="text" id="shipping-name" placeholder="Full Name" class="w-full p-2.5 rounded-xl border border-gray-200 text-xs" required />
+                <input type="text" id="shipping-phone" placeholder="Phone Number" class="w-full p-2.5 rounded-xl border border-gray-200 text-xs" required />
+              </div>
+              <input type="email" id="shipping-email" placeholder="Email Address" class="w-full p-2.5 rounded-xl border border-gray-200 text-xs" />
+              <input type="text" id="shipping-street" placeholder="Address line" class="w-full p-2.5 rounded-xl border border-gray-200 text-xs" required />
+              <div class="grid grid-cols-2 gap-3">
+                <input type="text" id="shipping-city" placeholder="City" class="w-full p-2.5 rounded-xl border border-gray-200 text-xs" required />
+                <input type="text" id="shipping-postal" placeholder="Postal Code" class="w-full p-2.5 rounded-xl border border-gray-200 text-xs" />
+              </div>
+              <button onclick="window.kutirCheckout.setStep(2)" class="w-full mt-4 py-3 bg-kutir-green hover:bg-black text-white rounded-full font-bold text-xs transition">Continue to Payment</button>
+            </div>
+          </div>
+          <div id="checkout-step-2-content" class="hidden">
+            <h4 class="font-bold text-sm text-kutir-charcoal mb-3">Payment Method</h4>
+            <div class="grid grid-cols-2 gap-2 mb-4">
+              <button id="pay-tab-bkash" onclick="window.kutirCheckout.setPaymentMethod('bKash')" class="p-3 border-2 border-kutir-green bg-kutir-mint/20 rounded-2xl text-center font-bold text-xs text-kutir-green">bKash Online</button>
+              <button id="pay-tab-card" onclick="window.kutirCheckout.setPaymentMethod('Card')" class="p-3 border border-gray-200 rounded-2xl text-center font-semibold text-xs text-gray-600">Card Payment</button>
+            </div>
+            <div class="flex gap-3 mt-6">
+              <button onclick="window.kutirCheckout.setStep(1)" class="w-1/3 py-3 border border-gray-300 rounded-full font-bold text-xs">Back</button>
+              <button onclick="window.kutirCheckout.setStep(3)" class="w-2/3 py-3 bg-kutir-green hover:bg-black text-white rounded-full font-bold text-xs">Review Order</button>
+            </div>
+          </div>
+          <div id="checkout-step-3-content" class="hidden space-y-4">
+            <h4 class="font-bold text-sm text-kutir-charcoal">Final Confirmation</h4>
+            <div class="p-3.5 bg-gray-50 rounded-2xl border border-gray-200">
+              <div id="review-shipping-address"></div>
+            </div>
+            <p id="review-payment-method" class="text-xs font-bold text-kutir-charcoal">bKash Online</p>
+            <button onclick="window.kutirCheckout.submitOrder()" class="w-full py-3.5 bg-kutir-green hover:bg-black text-white rounded-full font-bold text-sm transition shadow-xl">Confirm & Place Order</button>
+          </div>
+        </div>
+        <div class="md:col-span-5 bg-kutir-smoke/70 p-5 rounded-3xl border border-gray-100 flex flex-col justify-between">
+          <div>
+            <h4 class="font-bold text-xs uppercase tracking-wider text-gray-400 mb-3">Order Summary</h4>
+            <div id="checkout-mini-items" class="max-h-48 overflow-y-auto mb-4 space-y-1"></div>
+            <div class="space-y-2 text-xs border-t border-gray-200 pt-3">
+              <div class="flex justify-between"><span>Subtotal</span><span id="checkout-subtotal" class="font-bold">$0.00</span></div>
+              <div class="flex justify-between"><span>Shipping</span><span id="checkout-shipping" class="font-bold text-emerald-700">FREE</span></div>
+              <div class="flex justify-between text-sm font-extrabold border-t border-gray-200 pt-2"><span>Total</span><span id="checkout-grand-total" class="text-kutir-green">$0.00</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Order Success Modal -->
+  <div id="order-success-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
+    <div class="fixed inset-0 bg-black/60 backdrop-blur-sm"></div>
+    <div class="relative bg-white rounded-3xl max-w-md w-full p-8 shadow-2xl z-10 text-center">
+      <div class="w-16 h-16 rounded-full bg-kutir-mint text-kutir-green flex items-center justify-center text-2xl mx-auto mb-4"><i class="fa-solid fa-check"></i></div>
+      <h3 class="text-2xl font-black text-kutir-charcoal">Order Confirmed!</h3>
+      <div class="my-6 p-4 rounded-2xl bg-gray-50 border border-gray-200 text-left space-y-2 text-xs">
+        <div class="flex justify-between"><span class="text-gray-400">Order ID:</span><span id="success-order-id" class="font-mono font-bold text-kutir-green"></span></div>
+        <div class="flex justify-between"><span class="text-gray-400">Total:</span><span id="success-order-total" class="font-bold"></span></div>
+      </div>
+      <button id="success-track-btn" class="w-full py-3 bg-kutir-green text-white rounded-full font-bold text-xs hover:bg-black transition">Track Order</button>
+    </div>
+  </div>
+
+  <!-- Tracking Modal -->
+  <div id="tracking-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
+    <div onclick="window.kutirTracking.close()" class="fixed inset-0 bg-black/60 backdrop-blur-sm"></div>
+    <div class="relative bg-white rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-2xl z-10 max-h-[90vh] overflow-y-auto">
+      <div class="flex items-center justify-between pb-4 border-b border-gray-100 mb-6">
+        <h3 class="font-bold text-base text-kutir-charcoal">Live Order Tracking</h3>
+        <button onclick="window.kutirTracking.close()" class="w-8 h-8 rounded-full bg-gray-100"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="flex gap-2 mb-6">
+        <input type="text" id="tracking-search-input" placeholder="Order ID (e.g. KM-8841)" class="flex-1 p-2.5 rounded-full border border-gray-300 text-xs px-4 uppercase font-mono" />
+        <button onclick="window.kutirTracking.trackOrder()" class="px-5 py-2.5 bg-kutir-green text-white rounded-full font-bold text-xs">Track</button>
+      </div>
+      <div id="tracking-results-content">
+        <div id="tracking-timeline-steps" class="space-y-1 mb-6"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="kutir-toast" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
+    <div class="bg-[#231f1e] text-white px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-3 border border-white/10 pointer-events-auto">
+      <i id="toast-icon" class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
+      <span id="toast-message" class="text-xs font-semibold text-gray-100">Action completed</span>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/store.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/checkout.js"></script>
+  <script src="js/account.js"></script>
+  <script src="js/tracking.js"></script>
+  <script src="js/shop.js"></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      window.kutirShop.init();
+    });
+  </script>
+</body>
+</html>

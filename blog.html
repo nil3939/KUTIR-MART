@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kutir Journal & Blog - KUTIR MART</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            kutir: {
+              green: '#003d29',
+              greenDark: '#00291b',
+              greenLight: '#00583e',
+              mint: '#d2f7ec',
+              charcoal: '#231f1e',
+              smoke: '#f5f6f6',
+              linen: '#f2e4d9',
+              rose: '#f9dcdc'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="css/custom.css" />
+</head>
+<body class="text-kutir-charcoal bg-white antialiased selection:bg-kutir-mint selection:text-kutir-green">
+
+  <!-- ================= TOP BAR ================= -->
+  <div class="bg-kutir-green text-white text-xs py-2 px-4 border-b border-white/10">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-2">
+        <i class="fa-solid fa-phone text-[11px] text-kutir-mint"></i>
+        <span class="font-medium">+880 1700-000000</span>
+      </div>
+      <div class="hidden md:flex items-center gap-2">
+        <span>The Kutir Journal: Design, Living, Culture, and Craftsmanship</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="auth.html?mode=signin" class="hover:text-kutir-mint">Sign In</a>
+        <span>/</span>
+        <a href="auth.html?mode=signup" class="hover:text-kutir-mint">Register</a>
+        <span>|</span>
+        <a href="admin.html" class="bg-white/15 px-3 py-0.5 rounded-full text-[11px] font-semibold hover:bg-white hover:text-kutir-green">Admin</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= HEADER ================= -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+      <a href="index.html" class="flex items-center gap-2.5">
+        <div class="w-10 h-10 rounded-2xl bg-kutir-green flex items-center justify-center text-white text-lg">
+          <i class="fa-solid fa-bag-shopping"></i>
+        </div>
+        <div>
+          <span class="text-xl font-extrabold tracking-tight text-kutir-charcoal block leading-none">
+            KUTIR <span class="text-kutir-green font-normal">MART</span>
+          </span>
+          <span class="text-[9px] uppercase tracking-widest text-gray-400 font-semibold block mt-0.5">Heritage & Lifestyle</span>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-6 text-sm font-semibold text-kutir-charcoal">
+        <a href="index.html" class="hover:text-kutir-green">Home</a>
+        <a href="shop.html" class="hover:text-kutir-green">Shop</a>
+        <a href="about.html" class="hover:text-kutir-green">About</a>
+        <a href="blog.html" class="text-kutir-green font-bold border-b-2 border-kutir-green pb-0.5">Blog</a>
+        <a href="contact.html" class="hover:text-kutir-green">Contact</a>
+        <button onclick="window.kutirTracking.open()" class="text-xs text-kutir-green font-bold bg-kutir-mint/60 px-3 py-1.5 rounded-full">
+          <i class="fa-solid fa-location-dot"></i> Track
+        </button>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <div id="header-auth-container"></div>
+        <button onclick="window.kutirApp.openCart()" class="flex items-center gap-2.5 bg-kutir-green hover:bg-black text-white px-4 py-2 rounded-full font-semibold text-xs shadow-sm">
+          <i class="fa-solid fa-cart-shopping text-sm"></i>
+          <span id="cart-badge-count" class="bg-amber-400 text-black text-[10px] font-bold px-1.5 py-0.2 rounded-full">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= HERO FEATURED BLOG POST ================= -->
+  <section class="py-12 bg-[#fcfbf7] border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="mb-6">
+        <span class="text-xs font-bold uppercase tracking-widest text-kutir-green">Featured Story</span>
+        <h1 class="text-3xl sm:text-4xl font-black text-kutir-charcoal mt-1">The Kutir Journal</h1>
+      </div>
+
+      <div class="bg-white rounded-3xl overflow-hidden border border-gray-200/90 shadow-md grid grid-cols-1 lg:grid-cols-12">
+        <div class="lg:col-span-7 aspect-video lg:aspect-auto">
+          <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=800&auto=format&fit=crop&q=80" class="w-full h-full object-cover" />
+        </div>
+        <div class="lg:col-span-5 p-8 sm:p-10 flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="flex items-center gap-3 text-xs text-gray-400 font-medium">
+              <span class="px-2.5 py-0.5 rounded-full bg-kutir-mint text-kutir-green font-bold text-[10px] uppercase">Artisan Guilds</span>
+              <span>&bull;</span>
+              <span>5 Min Read</span>
+            </div>
+            <h2 class="text-2xl font-bold text-kutir-charcoal leading-snug">
+              The Revival of Vernacular Pottery & Minimalist Cane Wood Furniture in Urban Apartments
+            </h2>
+            <p class="text-xs text-gray-500 leading-relaxed">
+              How young homeowners in Dhaka and Chittagong are ditching disposable synthetic decor in favor of heirloom terracotta, hand-woven cane armchairs, and organic brassware.
+            </p>
+          </div>
+
+          <div class="pt-6 border-t border-gray-100 flex items-center justify-between">
+            <div class="flex items-center gap-2.5">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" class="w-8 h-8 rounded-full object-cover" />
+              <div>
+                <p class="text-xs font-bold text-gray-800">Farhana Rahman</p>
+                <p class="text-[10px] text-gray-400">Design Editor</p>
+              </div>
+            </div>
+            <button onclick="openBlogArticle(0)" class="px-4 py-2 rounded-full bg-kutir-green text-white text-xs font-bold hover:bg-black transition">
+              Read Story
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= ARTICLES GRID ================= -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Filter Tags -->
+      <div class="flex flex-wrap items-center gap-2 mb-10">
+        <button class="px-4 py-1.5 rounded-full text-xs font-bold bg-kutir-green text-white">All Articles</button>
+        <button class="px-4 py-1.5 rounded-full text-xs font-medium text-gray-600 bg-gray-100 hover:bg-gray-200">Craftsmanship</button>
+        <button class="px-4 py-1.5 rounded-full text-xs font-medium text-gray-600 bg-gray-100 hover:bg-gray-200">Home Styling</button>
+        <button class="px-4 py-1.5 rounded-full text-xs font-medium text-gray-600 bg-gray-100 hover:bg-gray-200">Audio & Gear</button>
+        <button class="px-4 py-1.5 rounded-full text-xs font-medium text-gray-600 bg-gray-100 hover:bg-gray-200">Sustainable Living</button>
+      </div>
+
+      <!-- Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- Post 1 -->
+        <article class="bg-white rounded-3xl border border-gray-200/80 overflow-hidden shadow-xs hover:shadow-md transition flex flex-col group cursor-pointer" onclick="openBlogArticle(1)">
+          <div class="aspect-video w-full overflow-hidden bg-gray-100 relative">
+            <img src="https://images.unsplash.com/photo-1543512214-318c7553f230?w=500&auto=format&fit=crop&q=80" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
+            <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded-full bg-white/90 text-kutir-green font-bold text-[10px] uppercase shadow-xs">Smart Home</span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center gap-2 text-[11px] text-gray-400 mb-2 font-medium">
+                <span>Sep 01, 2026</span> &bull; <span>4 min read</span>
+              </div>
+              <h3 class="font-bold text-base text-kutir-charcoal group-hover:text-kutir-green transition leading-snug">
+                Why Computational Audio is Changing Compact Home Living
+              </h3>
+              <p class="text-xs text-gray-500 mt-2 line-clamp-2 leading-relaxed">
+                Smart speakers like the HomePod mini produce astonishingly wide soundstages in modest spaces without giant floorstanding cabinets.
+              </p>
+            </div>
+            <div class="pt-4 border-t border-gray-100 mt-4 flex items-center justify-between text-xs font-bold text-kutir-green">
+              <span>Read Article</span>
+              <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition"></i>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post 2 -->
+        <article class="bg-white rounded-3xl border border-gray-200/80 overflow-hidden shadow-xs hover:shadow-md transition flex flex-col group cursor-pointer" onclick="openBlogArticle(2)">
+          <div class="aspect-video w-full overflow-hidden bg-gray-100 relative">
+            <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&auto=format&fit=crop&q=80" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
+            <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded-full bg-white/90 text-kutir-green font-bold text-[10px] uppercase shadow-xs">Travel & Gear</span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center gap-2 text-[11px] text-gray-400 mb-2 font-medium">
+                <span>Aug 26, 2026</span> &bull; <span>6 min read</span>
+              </div>
+              <h3 class="font-bold text-base text-kutir-charcoal group-hover:text-kutir-green transition leading-snug">
+                The Anatomy of an Indestructible Duffel Bag
+              </h3>
+              <p class="text-xs text-gray-500 mt-2 line-clamp-2 leading-relaxed">
+                Ballistic nylon, bar-tacked double stitching, and weatherproof zippers tested from Cox's Bazar beaches to Himalayan trails.
+              </p>
+            </div>
+            <div class="pt-4 border-t border-gray-100 mt-4 flex items-center justify-between text-xs font-bold text-kutir-green">
+              <span>Read Article</span>
+              <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition"></i>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post 3 -->
+        <article class="bg-white rounded-3xl border border-gray-200/80 overflow-hidden shadow-xs hover:shadow-md transition flex flex-col group cursor-pointer" onclick="openBlogArticle(3)">
+          <div class="aspect-video w-full overflow-hidden bg-gray-100 relative">
+            <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=500&auto=format&fit=crop&q=80" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
+            <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded-full bg-white/90 text-kutir-green font-bold text-[10px] uppercase shadow-xs">Slow Living</span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center gap-2 text-[11px] text-gray-400 mb-2 font-medium">
+                <span>Aug 19, 2026</span> &bull; <span>3 min read</span>
+              </div>
+              <h3 class="font-bold text-base text-kutir-charcoal group-hover:text-kutir-green transition leading-snug">
+                The Morning Ritual: Hand-Thrown Stoneware Pour-Over Brewing
+              </h3>
+              <p class="text-xs text-gray-500 mt-2 line-clamp-2 leading-relaxed">
+                Transform your morning coffee with local clay drippers that hold heat longer and develop deeper, balanced extraction notes.
+              </p>
+            </div>
+            <div class="pt-4 border-t border-gray-100 mt-4 flex items-center justify-between text-xs font-bold text-kutir-green">
+              <span>Read Article</span>
+              <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition"></i>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= NEWSLETTER SUBSCRIPTION ================= -->
+  <section class="py-16 bg-kutir-smoke border-t border-gray-100">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="max-w-md mx-auto space-y-3">
+        <div class="w-12 h-12 rounded-2xl bg-kutir-mint text-kutir-green flex items-center justify-center text-xl mx-auto">
+          <i class="fa-regular fa-envelope"></i>
+        </div>
+        <h3 class="text-2xl font-black text-kutir-charcoal">Subscribe to Kutir Journal</h3>
+        <p class="text-xs text-gray-500">Curated weekly essays on contemporary South Asian lifestyle, slow crafts, and limited promotional drops.</p>
+        
+        <form onsubmit="event.preventDefault(); alert('Subscribed! Thank you for reading Kutir Journal.'); this.reset();" class="flex gap-2 pt-2">
+          <input type="email" placeholder="Your email address" class="flex-1 px-4 py-2.5 rounded-full border border-gray-200 text-xs focus:outline-none focus:border-kutir-green" required />
+          <button type="submit" class="px-6 py-2.5 bg-kutir-green hover:bg-black text-white rounded-full font-bold text-xs transition">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ARTICLE READER MODAL ================= -->
+  <div id="blog-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
+    <div onclick="closeBlogArticle()" class="fixed inset-0 bg-black/60 backdrop-blur-xs"></div>
+    <div class="relative bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl z-10 max-h-[90vh] overflow-y-auto">
+      <button onclick="closeBlogArticle()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-500"><i class="fa-solid fa-xmark"></i></button>
+
+      <div class="space-y-4 text-xs">
+        <span id="modal-blog-tag" class="px-2.5 py-0.5 rounded-full bg-kutir-mint text-kutir-green font-bold uppercase text-[10px]">Article</span>
+        <h2 id="modal-blog-title" class="text-2xl font-black text-kutir-charcoal leading-snug">Article Title</h2>
+        <div class="flex items-center gap-3 text-gray-400 text-[11px] pb-3 border-b border-gray-100">
+          <span id="modal-blog-author">By Kutir Editorial</span>
+          <span>&bull;</span>
+          <span id="modal-blog-date">Sep 01, 2026</span>
+        </div>
+        <img id="modal-blog-image" src="" class="w-full h-64 object-cover rounded-2xl" />
+        <div id="modal-blog-body" class="text-gray-600 leading-relaxed space-y-3 text-xs">
+          <!-- Populated dynamically -->
+        </div>
+        <div class="pt-4 border-t border-gray-100 flex justify-between items-center">
+          <span class="text-gray-400 text-[11px]">Share this essay</span>
+          <div class="flex gap-3 text-sm text-gray-500">
+            <button class="hover:text-blue-600"><i class="fa-brands fa-facebook"></i></button>
+            <button class="hover:text-sky-500"><i class="fa-brands fa-twitter"></i></button>
+            <button class="hover:text-pink-600"><i class="fa-brands fa-instagram"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+    <!-- ================= MASTER FOOTER (MUSE SHOPCART 5-COLUMN) ================= -->
+  <footer class="bg-white border-t border-gray-200 pt-16 pb-12 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 pb-12 border-b border-gray-100">
+        <!-- Col 1: Brand Info -->
+        <div class="lg:col-span-2 space-y-4">
+          <a href="index.html" class="flex items-center gap-2.5">
+            <div class="w-8 h-8 rounded-xl bg-kutir-green flex items-center justify-center text-white text-base">
+              <i class="fa-solid fa-bag-shopping"></i>
+            </div>
+            <span class="text-lg font-extrabold tracking-tight text-kutir-charcoal">
+              KUTIR <span class="text-kutir-green font-normal">MART</span>
+            </span>
+          </a>
+          <p class="text-gray-500 text-xs leading-relaxed max-w-sm">
+            Kutir Mart is your premier lifestyle and e-commerce destination connecting authentic artisan crafts, daily essentials, and consumer electronics.
+          </p>
+          <!-- Accepted Payments Icons -->
+          <div class="pt-2">
+            <p class="text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-2">Accepted Payments</p>
+            <div class="flex items-center gap-2 text-xl text-gray-400">
+              <i class="fa-brands fa-cc-visa hover:text-blue-600 transition" title="Visa"></i>
+              <i class="fa-brands fa-cc-mastercard hover:text-red-500 transition" title="Mastercard"></i>
+              <i class="fa-brands fa-cc-amex hover:text-sky-500 transition" title="AMEX"></i>
+              <span class="text-xs font-extrabold text-pink-600 px-1.5 py-0.5 bg-pink-50 rounded">bKash</span>
+              <span class="text-xs font-extrabold text-orange-600 px-1.5 py-0.5 bg-orange-50 rounded">Nagad</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Col 2: Department -->
+        <div>
+          <h5 class="font-bold text-sm text-kutir-charcoal mb-3">Department</h5>
+          <ul class="space-y-2 text-gray-500">
+            <li><a href="shop.html?category=tech" class="hover:text-kutir-green transition">Fashion & Tech</a></li>
+            <li><a href="shop.html?category=books" class="hover:text-kutir-green transition">Education & Books</a></li>
+            <li><a href="shop.html?category=furniture" class="hover:text-kutir-green transition">Home Furniture</a></li>
+            <li><a href="shop.html?category=sneakers" class="hover:text-kutir-green transition">Sneakers & Sports</a></li>
+            <li><a href="shop.html?category=travel" class="hover:text-kutir-green transition">Travel & Luggage</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: About Us -->
+        <div>
+          <h5 class="font-bold text-sm text-kutir-charcoal mb-3">About Us</h5>
+          <ul class="space-y-2 text-gray-500">
+            <li><a href="about.html" class="hover:text-kutir-green transition">Our Heritage</a></li>
+            <li><a href="about.html" class="hover:text-kutir-green transition">Artisan Community</a></li>
+            <li><a href="about.html" class="hover:text-kutir-green transition">Careers</a></li>
+            <li><a href="about.html" class="hover:text-kutir-green transition">Sustainability</a></li>
+            <li><a href="blog.html" class="hover:text-kutir-green transition">Press & Media</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Services -->
+        <div>
+          <h5 class="font-bold text-sm text-kutir-charcoal mb-3">Services</h5>
+          <ul class="space-y-2 text-gray-500">
+            <li><a href="shop.html?deal=true" class="hover:text-kutir-green transition">Gift Cards & Deals</a></li>
+            <li><a href="shop.html" class="hover:text-kutir-green transition">Catalog Explorer</a></li>
+            <li><a href="javascript:void(0)" onclick="window.kutirTracking ? window.kutirTracking.open() : window.location.href='index.html'" class="hover:text-kutir-green transition">Order Tracking</a></li>
+            <li><a href="contact.html" class="hover:text-kutir-green transition">Store Pickup</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 5: Help & Support -->
+        <div>
+          <h5 class="font-bold text-sm text-kutir-charcoal mb-3">Help & Support</h5>
+          <ul class="space-y-2 text-gray-500">
+            <li><a href="contact.html" class="hover:text-kutir-green transition">Kutir Help Center</a></li>
+            <li><a href="contact.html" class="hover:text-kutir-green transition">Returns & Refunds</a></li>
+            <li><a href="javascript:void(0)" onclick="window.kutirTracking ? window.kutirTracking.open() : window.location.href='index.html'" class="hover:text-kutir-green transition">Track Package</a></li>
+            <li><a href="contact.html" class="hover:text-kutir-green transition">Contact Us</a></li>
+            <li><a href="contact.html" class="hover:text-kutir-green transition">Security Safety</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Copyright Bar -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-gray-400">
+        <p>&copy; 2026 KUTIR MART. Designed in style of Muse Shopcart. All rights reserved.</p>
+        <div class="flex items-center gap-6">
+          <a href="about.html" class="hover:text-kutir-green transition">Terms of Service</a>
+          <a href="about.html" class="hover:text-kutir-green transition">Privacy Policy</a>
+          <a href="admin.html" class="font-bold text-kutir-green hover:underline transition">Admin Console</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="js/store.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/tracking.js"></script>
+  <script>
+    const BLOG_POSTS = [
+      {
+        title: "The Revival of Vernacular Pottery & Minimalist Cane Wood Furniture in Urban Apartments",
+        tag: "Artisan Guilds",
+        author: "Farhana Rahman, Design Editor",
+        date: "Sep 03, 2026",
+        image: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=800&auto=format&fit=crop&q=80",
+        body: "<p>Across Dhaka's contemporary apartments, an intriguing design movement is unfolding: younger generations are rediscovering the warmth and earthiness of traditional terracotta, teak wood, and natural cane.</p><p>Unlike synthetic mass-manufactured items, handcrafted artisan pieces age gracefully. A hand-thrown ceramic vase develops a rich patina over the years, and a solid teak armchair can withstand generations with minimal care.</p><p>At Kutir Mart, we partner directly with artisan workshops in Rajshahi and Sylhet to adapt these time-honored crafts for modern metropolitan aesthetics.</p>"
+      },
+      {
+        title: "Why Computational Audio is Changing Compact Home Living",
+        tag: "Smart Home",
+        author: "Tahsin Ahmed, Tech Columnist",
+        date: "Sep 01, 2026",
+        image: "https://images.unsplash.com/photo-1543512214-318c7553f230?w=800&auto=format&fit=crop&q=80",
+        body: "<p>The era of needing 50-pound speakers and tangled speaker wire to achieve room-filling acoustics has definitively passed. Modern DSP (digital signal processing) and micro-acoustic transducers can now analyze room reflections hundreds of times per second.</p><p>With devices like HomePod mini, acoustic waves are dynamically tuned to compensate for furniture placement and boundary walls, delivering pristine high-fidelity reproduction from a sphere that fits in the palm of your hand.</p>"
+      },
+      {
+        title: "The Anatomy of an Indestructible Duffel Bag",
+        tag: "Travel & Gear",
+        author: "Sabbir Hossain, Outdoor Specialist",
+        date: "Aug 26, 2026",
+        image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&auto=format&fit=crop&q=80",
+        body: "<p>A truly reliable travel bag isn't just about exterior styling; it's about tensile strength, weatherproofing, and stress distribution. When navigating crowded airports, monsoon downpours, or rugged terrain, structural integrity is paramount.</p><p>Look for double-stitched bar tacks at shoulder strap anchor points, water-resistant ballistic TPE laminates, and oversized self-repairing coil zippers that won't fail under heavy loads.</p>"
+      },
+      {
+        title: "The Morning Ritual: Hand-Thrown Stoneware Pour-Over Brewing",
+        tag: "Slow Living",
+        author: "Farzana Karim, Barista & Roaster",
+        date: "Aug 19, 2026",
+        image: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=800&auto=format&fit=crop&q=80",
+        body: "<p>Manual pour-over brewing offers an intentional pause in our otherwise hyper-connected digital mornings. The tactile nature of blooming fresh grounds and observing the steady stream of coffee creates mindful calm.</p><p>Stoneware ceramic drippers offer superior thermal retention compared to plastic or thin glass, ensuring that water maintains optimal extraction temperatures (92°C to 96°C) throughout the 3-minute brewing cycle.</p>"
+      }
+    ];
+
+    function openBlogArticle(index) {
+      const post = BLOG_POSTS[index] || BLOG_POSTS[0];
+      document.getElementById('modal-blog-title').textContent = post.title;
+      document.getElementById('modal-blog-tag').textContent = post.tag;
+      document.getElementById('modal-blog-author').textContent = post.author;
+      document.getElementById('modal-blog-date').textContent = post.date;
+      document.getElementById('modal-blog-image').src = post.image;
+      document.getElementById('modal-blog-body').innerHTML = post.body;
+      document.getElementById('blog-modal').classList.remove('hidden');
+    }
+
+    function closeBlogArticle() {
+      document.getElementById('blog-modal').classList.add('hidden');
+    }
+  </script>
+</body>
+</html>

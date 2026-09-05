@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us - KUTIR MART</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            kutir: {
+              green: '#003d29',
+              greenDark: '#00291b',
+              greenLight: '#00583e',
+              mint: '#d2f7ec',
+              charcoal: '#231f1e',
+              smoke: '#f5f6f6',
+              linen: '#f2e4d9',
+              rose: '#f9dcdc'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="css/custom.css" />
+</head>
+<body class="text-kutir-charcoal bg-white antialiased selection:bg-kutir-mint selection:text-kutir-green">
+
+  <!-- ================= TOP BAR ================= -->
+  <div class="bg-kutir-green text-white text-xs py-2 px-4 border-b border-white/10">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-2">
+        <i class="fa-solid fa-phone text-[11px] text-kutir-mint"></i>
+        <span class="font-medium">+880 1700-000000</span>
+      </div>
+      <div class="hidden md:flex items-center gap-2">
+        <span>Authentic Craftsmanship & Everyday Modern Department Store</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="auth.html?mode=signin" class="hover:text-kutir-mint">Sign In</a>
+        <span>/</span>
+        <a href="auth.html?mode=signup" class="hover:text-kutir-mint">Register</a>
+        <span>|</span>
+        <a href="admin.html" class="bg-white/15 px-3 py-0.5 rounded-full text-[11px] font-semibold hover:bg-white hover:text-kutir-green">Admin</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= HEADER ================= -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+      <a href="index.html" class="flex items-center gap-2.5">
+        <div class="w-10 h-10 rounded-2xl bg-kutir-green flex items-center justify-center text-white text-lg">
+          <i class="fa-solid fa-bag-shopping"></i>
+        </div>
+        <div>
+          <span class="text-xl font-extrabold tracking-tight text-kutir-charcoal block leading-none">
+            KUTIR <span class="text-kutir-green font-normal">MART</span>
+          </span>
+          <span class="text-[9px] uppercase tracking-widest text-gray-400 font-semibold block mt-0.5">Heritage & Lifestyle</span>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-6 text-sm font-semibold text-kutir-charcoal">
+        <a href="index.html" class="hover:text-kutir-green">Home</a>
+        <a href="shop.html" class="hover:text-kutir-green">Shop</a>
+        <a href="about.html" class="text-kutir-green font-bold border-b-2 border-kutir-green pb-0.5">About</a>
+        <a href="blog.html" class="hover:text-kutir-green">Blog</a>
+        <a href="contact.html" class="hover:text-kutir-green">Contact</a>
+        <button onclick="window.kutirTracking.open()" class="text-xs text-kutir-green font-bold bg-kutir-mint/60 px-3 py-1.5 rounded-full">
+          <i class="fa-solid fa-location-dot"></i> Track
+        </button>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <div id="header-auth-container"></div>
+        <button onclick="window.kutirApp.openCart()" class="flex items-center gap-2.5 bg-kutir-green hover:bg-black text-white px-4 py-2 rounded-full font-semibold text-xs shadow-sm">
+          <i class="fa-solid fa-cart-shopping text-sm"></i>
+          <span id="cart-badge-count" class="bg-amber-400 text-black text-[10px] font-bold px-1.5 py-0.2 rounded-full">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= HERO STORY SECTION ================= -->
+  <section class="hero-stage py-20 border-b border-gray-100">
+    <div class="hero-curve"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="max-w-2xl space-y-4">
+        <span class="px-3 py-1 rounded-full bg-kutir-mint text-kutir-green font-bold text-xs">Our Heritage & Mission</span>
+        <h1 class="text-4xl sm:text-5xl font-black text-kutir-charcoal tracking-tight leading-tight">
+          Bridging timeless heritage with modern lifestyles.
+        </h1>
+        <p class="text-sm sm:text-base text-gray-600 leading-relaxed">
+          KUTIR MART was born out of a profound passion for preserving traditional artisan guilds across Bangladesh while integrating modern lifestyle technologies and seamless e-commerce convenience.
+        </p>
+        <div class="pt-4 flex gap-4">
+          <a href="shop.html" class="btn-primary-kutir px-6 py-3 text-xs inline-flex items-center gap-2">Explore Shop Catalog</a>
+          <a href="contact.html" class="btn-outline-kutir px-6 py-3 text-xs inline-flex items-center gap-2">Contact Our Team</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= IMPACT METRICS ================= -->
+  <section class="py-16 bg-white border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div class="p-6 rounded-3xl bg-kutir-smoke border border-gray-100">
+          <h3 class="text-3xl sm:text-4xl font-black text-kutir-green">12,000+</h3>
+          <p class="text-xs text-gray-500 font-semibold mt-1">Artisan Crafts Supported</p>
+        </div>
+        <div class="p-6 rounded-3xl bg-kutir-smoke border border-gray-100">
+          <h3 class="text-3xl sm:text-4xl font-black text-kutir-charcoal">64</h3>
+          <p class="text-xs text-gray-500 font-semibold mt-1">Districts Reached</p>
+        </div>
+        <div class="p-6 rounded-3xl bg-kutir-smoke border border-gray-100">
+          <h3 class="text-3xl sm:text-4xl font-black text-kutir-green">99.4%</h3>
+          <p class="text-xs text-gray-500 font-semibold mt-1">On-Time Delivery SLA</p>
+        </div>
+        <div class="p-6 rounded-3xl bg-kutir-smoke border border-gray-100">
+          <h3 class="text-3xl sm:text-4xl font-black text-kutir-charcoal">50K+</h3>
+          <p class="text-xs text-gray-500 font-semibold mt-1">Satisfied Shoppers</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= OUR VALUES ================= -->
+  <section class="py-20 bg-[#fafafa]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-xl mx-auto mb-12">
+        <h2 class="text-3xl font-extrabold text-kutir-charcoal">Core Values We Stand By</h2>
+        <p class="text-xs text-gray-500 mt-2">Every parcel shipped carries our commitment to fair wages, ecological sustainability, and customer joy.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white p-8 rounded-3xl border border-gray-200 shadow-xs space-y-3">
+          <div class="w-12 h-12 rounded-2xl bg-kutir-mint text-kutir-green flex items-center justify-center text-xl">
+            <i class="fa-solid fa-handshake-simple"></i>
+          </div>
+          <h4 class="text-base font-bold text-kutir-charcoal">Fair Trade & Artisan Dignity</h4>
+          <p class="text-xs text-gray-500 leading-relaxed">
+            We partner directly with weavers, potters, and leatherworkers, guaranteeing living wages and funding vocational education for rural creators.
+          </p>
+        </div>
+
+        <div class="bg-white p-8 rounded-3xl border border-gray-200 shadow-xs space-y-3">
+          <div class="w-12 h-12 rounded-2xl bg-kutir-mint text-kutir-green flex items-center justify-center text-xl">
+            <i class="fa-solid fa-seedling"></i>
+          </div>
+          <h4 class="text-base font-bold text-kutir-charcoal">Sustainable Materials</h4>
+          <p class="text-xs text-gray-500 leading-relaxed">
+            From biodegradable organic canvas to sustainably harvested teak wood and recyclable cardboard packaging, we minimize environmental footprints.
+          </p>
+        </div>
+
+        <div class="bg-white p-8 rounded-3xl border border-gray-200 shadow-xs space-y-3">
+          <div class="w-12 h-12 rounded-2xl bg-kutir-mint text-kutir-green flex items-center justify-center text-xl">
+            <i class="fa-solid fa-gem"></i>
+          </div>
+          <h4 class="text-base font-bold text-kutir-charcoal">Uncompromising Quality</h4>
+          <p class="text-xs text-gray-500 leading-relaxed">
+            Every tech accessory, gadget, and home decor centerpiece undergoes strict three-stage inspection before dispatch from our Banani warehouse.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+    <!-- ================= MASTER FOOTER (MUSE SHOPCART 5-COLUMN) ================= -->
+  <footer class="bg-white border-t border-gray-200 pt-16 pb-12 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 pb-12 border-b border-gray-100">
+        <!-- Col 1: Brand Info -->
+        <div class="lg:col-span-2 space-y-4">
+          <a href="index.html" class="flex items-center gap-2.5">
+            <div class="w-8 h-8 rounded-xl bg-kutir-green flex items-center justify-center text-white text-base">
+              <i class="fa-solid fa-bag-shopping"></i>
+            </div>
+            <span class="text-lg font-extrabold tracking-tight text-kutir-charcoal">
+              KUTIR <span class="text-kutir-green font-normal">MART</span>
+            </span>
+          </a>
+          <p class="text-gray-500 text-xs leading-relaxed max-w-sm">
+            Kutir Mart is your premier lifestyle and e-commerce destination connecting authentic artisan crafts, daily essentials, and consumer electronics.
+          </p>
+          <!-- Accepted Payments Icons -->
+          <div class="pt-2">
+            <p class="text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-2">Accepted Payments</p>
+            <div class="flex items-center gap-2 text-xl text-gray-400">
+              <i class="fa-brands fa-cc-visa hover:text-blue-600 transition" title="Visa"></i>
+              <i class="fa-brands fa-cc-mastercard hover:text-red-500 transition" title="Mastercard"></i>
+              <i class="fa-brands fa-cc-amex hover:text-sky-500 transition" title="AMEX"></i>
+              <span class="text-xs font-extrabold text-pink-600 px-1.5 py-0.5 bg-pink-50 rounded">bKash</span>
+              <span class="text-xs font-extrabold text-orange-600 px-1.5 py-0.5 bg-orange-50 rounded">Nagad</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Col 2: Department -->
+        <div>
+          <h5 class="font-bold text-sm text-kutir-charcoal mb-3">Department</h5>
+          <ul class="space-y-2 text-gray-500">
+            <li><a href="shop.html?category=tech" class="hover:text-kutir-green transition">Fashion & Tech</a></li>
+            <li><a href="shop.html?category=books" class="hover:text-kutir-green transition">Education & Books</a></li>
+            <li><a href="shop.html?category=furniture" class="hover:text-kutir-green transition">Home Furniture</a></li>
+            <li><a href="shop.html?category=sneakers" class="hover:text-kutir-green transition">Sneakers & Sports</a></li>
+            <li><a href="shop.html?category=travel" class="hover:text-kutir-green transition">Travel & Luggage</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: About Us -->
+        <div>
+          <h5 class="font-bold text-sm text-kutir-charcoal mb-3">About Us</h5>
+          <ul class="space-y-2 text-gray-500">
+            <li><a href="about.html" class="hover:text-kutir-green transition">Our Heritage</a></li>
+            <li><a href="about.html" class="hover:text-kutir-green transition">Artisan Community</a></li>
+            <li><a href="about.html" class="hover:text-kutir-green transition">Careers</a></li>
+            <li><a href="about.html" class="hover:text-kutir-green transition">Sustainability</a></li>
+            <li><a href="blog.html" class="hover:text-kutir-green transition">Press & Media</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Services -->
+        <div>
+          <h5 class="font-bold text-sm text-kutir-charcoal mb-3">Services</h5>
+          <ul class="space-y-2 text-gray-500">
+            <li><a href="shop.html?deal=true" class="hover:text-kutir-green transition">Gift Cards & Deals</a></li>
+            <li><a href="shop.html" class="hover:text-kutir-green transition">Catalog Explorer</a></li>
+            <li><a href="javascript:void(0)" onclick="window.kutirTracking ? window.kutirTracking.open() : window.location.href='index.html'" class="hover:text-kutir-green transition">Order Tracking</a></li>
+            <li><a href="contact.html" class="hover:text-kutir-green transition">Store Pickup</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 5: Help & Support -->
+        <div>
+          <h5 class="font-bold text-sm text-kutir-charcoal mb-3">Help & Support</h5>
+          <ul class="space-y-2 text-gray-500">
+            <li><a href="contact.html" class="hover:text-kutir-green transition">Kutir Help Center</a></li>
+            <li><a href="contact.html" class="hover:text-kutir-green transition">Returns & Refunds</a></li>
+            <li><a href="javascript:void(0)" onclick="window.kutirTracking ? window.kutirTracking.open() : window.location.href='index.html'" class="hover:text-kutir-green transition">Track Package</a></li>
+            <li><a href="contact.html" class="hover:text-kutir-green transition">Contact Us</a></li>
+            <li><a href="contact.html" class="hover:text-kutir-green transition">Security Safety</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Copyright Bar -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-gray-400">
+        <p>&copy; 2026 KUTIR MART. Designed in style of Muse Shopcart. All rights reserved.</p>
+        <div class="flex items-center gap-6">
+          <a href="about.html" class="hover:text-kutir-green transition">Terms of Service</a>
+          <a href="about.html" class="hover:text-kutir-green transition">Privacy Policy</a>
+          <a href="admin.html" class="font-bold text-kutir-green hover:underline transition">Admin Console</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/store.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/checkout.js"></script>
+  <script src="js/account.js"></script>
+  <script src="js/tracking.js"></script>
+</body>
+</html>

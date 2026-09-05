@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign In & Sign Up - KUTIR MART</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            kutir: {
+              green: '#003d29',
+              greenDark: '#00291b',
+              greenLight: '#00583e',
+              mint: '#d2f7ec',
+              charcoal: '#231f1e',
+              smoke: '#f5f6f6',
+              linen: '#f2e4d9',
+              rose: '#f9dcdc'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/custom.css" />
+</head>
+<body class="bg-[#fafafa] text-kutir-charcoal font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-kutir-mint selection:text-kutir-green">
+
+  <!-- ================= TOP BAR ================= -->
+  <header class="bg-white border-b border-gray-100 py-4 px-6 sm:px-12 flex items-center justify-between">
+    <!-- Brand Logo -->
+    <a href="index.html" class="flex items-center gap-2.5 group">
+      <div class="w-9 h-9 rounded-2xl bg-kutir-green flex items-center justify-center text-white text-base shadow-sm group-hover:scale-105 transition">
+        <i class="fa-solid fa-bag-shopping"></i>
+      </div>
+      <div>
+        <span class="text-lg font-extrabold tracking-tight text-kutir-charcoal block leading-none">
+          KUTIR <span class="text-kutir-green font-normal">MART</span>
+        </span>
+        <span class="text-[9px] uppercase tracking-widest text-gray-400 font-semibold block mt-0.5">Artisan & Living</span>
+      </div>
+    </a>
+
+    <!-- Return to shop link -->
+    <a href="index.html" class="flex items-center gap-2 text-xs font-bold text-gray-600 hover:text-kutir-green transition py-2 px-4 rounded-full border border-gray-200 hover:border-kutir-green bg-white shadow-2xs">
+      <i class="fa-solid fa-arrow-left text-[11px]"></i>
+      <span>Back to Store</span>
+    </a>
+  </header>
+
+  <!-- ================= MAIN AUTH CONTAINER ================= -->
+  <main class="flex-1 max-w-6xl w-full mx-auto p-4 sm:p-8 flex items-center justify-center">
+    <div class="w-full bg-white rounded-3xl shadow-2xl border border-gray-100/80 overflow-hidden grid grid-cols-1 lg:grid-cols-12 min-h-[640px]">
+      
+      <!-- LEFT SIDEBAR: BRAND SHOWCASE (DESKTOP) -->
+      <div class="lg:col-span-5 bg-gradient-to-br from-kutir-green to-kutir-greenDark text-white p-8 sm:p-12 relative overflow-hidden flex flex-col justify-between">
+        
+        <!-- Background curved circle accents -->
+        <div class="absolute -right-16 -top-16 w-64 h-64 rounded-full bg-white/5 pointer-events-none"></div>
+        <div class="absolute -left-12 -bottom-12 w-80 h-80 rounded-full bg-kutir-mint/10 pointer-events-none"></div>
+
+        <!-- Top Content -->
+        <div class="relative z-10 space-y-4">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-kutir-mint text-xs font-bold backdrop-blur-xs">
+            <span class="w-2 h-2 rounded-full bg-kutir-mint animate-pulse"></span>
+            <span>Customer & Admin Gateway</span>
+          </div>
+
+          <h2 class="text-3xl sm:text-4xl font-black tracking-tight leading-tight">
+            Elevate your shopping experience.
+          </h2>
+
+          <p class="text-xs sm:text-sm text-gray-200 leading-relaxed max-w-sm">
+            Access your orders, track deliveries in real-time, redeem member discounts, and discover curated handcrafted products.
+          </p>
+        </div>
+
+        <!-- Floating Testimonial & Benefits -->
+        <div class="relative z-10 space-y-4 my-8">
+          <div class="p-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 space-y-2">
+            <div class="flex items-center gap-1 text-amber-300 text-xs">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p class="text-xs text-gray-100 italic">"Kutir Mart brings genuine Bangladeshi craftsmanship together with modern speed. Outstanding order tracking!"</p>
+            <div class="flex items-center gap-2 pt-1">
+              <img src="assets/jerry.png" class="w-6 h-6 rounded-full object-cover border border-white/40" />
+              <span class="text-[11px] font-semibold text-white">Farhana Rahman &bull; Verified Member</span>
+            </div>
+          </div>
+
+          <!-- Feature Bullets -->
+          <div class="grid grid-cols-2 gap-2 text-xs text-gray-200 font-medium">
+            <div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-kutir-mint text-[11px]"></i> Free Shipping over $150</div>
+            <div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-kutir-mint text-[11px]"></i> 5% Cashback Rewards</div>
+            <div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-kutir-mint text-[11px]"></i> 100% Genuine Guarantee</div>
+            <div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-kutir-mint text-[11px]"></i> 24/7 Priority Support</div>
+          </div>
+        </div>
+
+        <!-- Footer Note -->
+        <div class="relative z-10 text-[11px] text-gray-300">
+          <span>&copy; 2026 KUTIR MART Inc. All data encrypted.</span>
+        </div>
+
+      </div>
+
+      <!-- RIGHT FORM AREA: SIGN IN & SIGN UP -->
+      <div class="lg:col-span-7 p-6 sm:p-12 flex flex-col justify-center">
+        
+        <!-- Tab Toggle Switcher -->
+        <div class="flex items-center p-1 bg-gray-100 rounded-full max-w-xs mb-8">
+          <button id="auth-tab-signin" onclick="switchAuthTab('signin')" class="flex-1 py-2 rounded-full font-bold text-xs bg-kutir-green text-white shadow-xs transition">
+            Sign In
+          </button>
+          <button id="auth-tab-signup" onclick="switchAuthTab('signup')" class="flex-1 py-2 rounded-full font-semibold text-xs text-gray-600 hover:text-kutir-charcoal transition">
+            Create Account
+          </button>
+        </div>
+
+        <!-- Alert Notification Box -->
+        <div id="auth-alert" class="hidden mb-6 p-3.5 rounded-2xl text-xs font-semibold flex items-center gap-2.5">
+          <i id="auth-alert-icon" class="fa-solid fa-circle-info text-base"></i>
+          <span id="auth-alert-text">Alert message</span>
+        </div>
+
+        <!-- ================= 1. SIGN IN FORM ================= -->
+        <div id="signin-section">
+          <div class="mb-6">
+            <h3 class="text-2xl font-black text-kutir-charcoal">Welcome back!</h3>
+            <p class="text-xs text-gray-500 mt-1">Please sign in with your email or phone number to access your account</p>
+          </div>
+
+          <!-- 1-Click Quick Demo Logins -->
+          <div class="mb-6 p-3.5 rounded-2xl bg-kutir-smoke border border-gray-200/80">
+            <span class="block text-[10px] font-extrabold uppercase tracking-wider text-gray-400 mb-2">⚡ 1-Click Quick Demo Login</span>
+            <div class="grid grid-cols-2 gap-2">
+              <button type="button" onclick="fillDemoCredentials('customer')" class="px-3 py-2 bg-white hover:bg-kutir-mint/40 border border-gray-200 text-xs font-bold text-kutir-green rounded-xl transition text-left flex items-center justify-between">
+                <span>Customer Demo</span>
+                <i class="fa-solid fa-user text-[10px] text-gray-400"></i>
+              </button>
+              <button type="button" onclick="fillDemoCredentials('admin')" class="px-3 py-2 bg-white hover:bg-amber-50 border border-gray-200 text-xs font-bold text-amber-800 rounded-xl transition text-left flex items-center justify-between">
+                <span>Admin Demo</span>
+                <i class="fa-solid fa-shield-halved text-[10px] text-amber-500"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Form -->
+          <form onsubmit="handleSignInSubmit(event)" class="space-y-4">
+            <div>
+              <label class="block text-xs font-bold text-gray-700 mb-1.5">Email Address or Phone</label>
+              <div class="relative">
+                <input 
+                  type="text" 
+                  id="signin-identifier" 
+                  value="jerry@kutirmart.com"
+                  placeholder="name@example.com or 017XXXXXXXX" 
+                  class="w-full pl-10 pr-4 py-3 rounded-2xl border border-gray-200 text-xs text-kutir-charcoal focus:outline-none focus:border-kutir-green focus:ring-1 focus:ring-kutir-green transition" 
+                  required 
+                />
+                <i class="fa-regular fa-envelope absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex items-center justify-between mb-1.5">
+                <label class="text-xs font-bold text-gray-700">Password</label>
+                <button type="button" onclick="openForgotPasswordModal()" class="text-xs font-semibold text-kutir-green hover:underline">Forgot password?</button>
+              </div>
+              <div class="relative">
+                <input 
+                  type="password" 
+                  id="signin-password" 
+                  value="password123"
+                  placeholder="Enter your password" 
+                  class="w-full pl-10 pr-10 py-3 rounded-2xl border border-gray-200 text-xs text-kutir-charcoal focus:outline-none focus:border-kutir-green focus:ring-1 focus:ring-kutir-green transition" 
+                  required 
+                />
+                <i class="fa-solid fa-lock absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
+                <button type="button" onclick="togglePasswordVisibility('signin-password', this)" class="absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-kutir-charcoal text-xs p-1">
+                  <i class="fa-regular fa-eye"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Remember Me -->
+            <div class="flex items-center justify-between pt-1">
+              <label class="flex items-center gap-2 cursor-pointer text-xs text-gray-600">
+                <input type="checkbox" id="signin-remember" checked class="rounded text-kutir-green focus:ring-kutir-green" />
+                <span>Keep me signed in</span>
+              </label>
+            </div>
+
+            <!-- Submit CTA -->
+            <button type="submit" class="w-full py-3.5 rounded-full bg-kutir-green hover:bg-black text-white font-bold text-xs tracking-wide transition shadow-lg flex items-center justify-center gap-2 mt-2">
+              <span>Sign In to Kutir Mart</span>
+              <i class="fa-solid fa-arrow-right text-[10px]"></i>
+            </button>
+          </form>
+
+          <!-- Social Login Divider -->
+          <div class="relative my-6 text-center">
+            <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-gray-200"></div></div>
+            <span class="relative bg-white px-3 text-xs text-gray-400 font-medium">Or continue with</span>
+          </div>
+
+          <!-- Social Buttons -->
+          <div class="grid grid-cols-3 gap-3">
+            <button onclick="handleSocialLogin('Google')" class="py-2.5 px-4 border border-gray-200 hover:border-gray-300 rounded-2xl flex items-center justify-center gap-2 text-xs font-semibold text-gray-700 hover:bg-gray-50 transition">
+              <i class="fa-brands fa-google text-red-500"></i>
+              <span>Google</span>
+            </button>
+            <button onclick="handleSocialLogin('Facebook')" class="py-2.5 px-4 border border-gray-200 hover:border-gray-300 rounded-2xl flex items-center justify-center gap-2 text-xs font-semibold text-gray-700 hover:bg-gray-50 transition">
+              <i class="fa-brands fa-facebook-f text-blue-600"></i>
+              <span>Facebook</span>
+            </button>
+            <button onclick="handleSocialLogin('Apple')" class="py-2.5 px-4 border border-gray-200 hover:border-gray-300 rounded-2xl flex items-center justify-center gap-2 text-xs font-semibold text-gray-700 hover:bg-gray-50 transition">
+              <i class="fa-brands fa-apple text-black"></i>
+              <span>Apple</span>
+            </button>
+          </div>
+
+          <!-- Bottom Switch Link -->
+          <p class="text-center text-xs text-gray-500 mt-6">
+            Don't have an account? 
+            <button onclick="switchAuthTab('signup')" class="font-bold text-kutir-green hover:underline ml-1">Create an account</button>
+          </p>
+        </div>
+
+        <!-- ================= 2. SIGN UP FORM ================= -->
+        <div id="signup-section" class="hidden">
+          <div class="mb-6">
+            <h3 class="text-2xl font-black text-kutir-charcoal">Create an account</h3>
+            <p class="text-xs text-gray-500 mt-1">Join Kutir Mart today to claim 5% cashback and fast doorstep delivery</p>
+          </div>
+
+          <form onsubmit="handleSignUpSubmit(event)" class="space-y-3.5">
+            <!-- Full Name -->
+            <div>
+              <label class="block text-xs font-bold text-gray-700 mb-1">Full Name</label>
+              <div class="relative">
+                <input 
+                  type="text" 
+                  id="signup-name" 
+                  placeholder="e.g. Ayesha Rahman" 
+                  class="w-full pl-10 pr-4 py-2.5 rounded-2xl border border-gray-200 text-xs focus:outline-none focus:border-kutir-green focus:ring-1 focus:ring-kutir-green transition" 
+                  required 
+                />
+                <i class="fa-regular fa-user absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
+              </div>
+            </div>
+
+            <!-- Email and Phone in grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-bold text-gray-700 mb-1">Email Address</label>
+                <div class="relative">
+                  <input 
+                    type="email" 
+                    id="signup-email" 
+                    placeholder="name@example.com" 
+                    class="w-full pl-9 pr-3 py-2.5 rounded-2xl border border-gray-200 text-xs focus:outline-none focus:border-kutir-green" 
+                    required 
+                  />
+                  <i class="fa-regular fa-envelope absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
+                </div>
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-gray-700 mb-1">Phone Number</label>
+                <div class="relative">
+                  <input 
+                    type="text" 
+                    id="signup-phone" 
+                    placeholder="+880 1700-000000" 
+                    class="w-full pl-9 pr-3 py-2.5 rounded-2xl border border-gray-200 text-xs focus:outline-none focus:border-kutir-green" 
+                    required 
+                  />
+                  <i class="fa-solid fa-phone absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- Password & Confirm Password -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-bold text-gray-700 mb-1">Password</label>
+                <div class="relative">
+                  <input 
+                    type="password" 
+                    id="signup-password" 
+                    placeholder="Min 6 characters" 
+                    oninput="checkPasswordStrength(this.value)"
+                    class="w-full pl-9 pr-9 py-2.5 rounded-2xl border border-gray-200 text-xs focus:outline-none focus:border-kutir-green" 
+                    required 
+                  />
+                  <i class="fa-solid fa-lock absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
+                  <button type="button" onclick="togglePasswordVisibility('signup-password', this)" class="absolute right-2.5 top-1/2 -translate-y-1/2 text-gray-400 text-xs p-1">
+                    <i class="fa-regular fa-eye"></i>
+                  </button>
+                </div>
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-gray-700 mb-1">Confirm Password</label>
+                <div class="relative">
+                  <input 
+                    type="password" 
+                    id="signup-confirm-password" 
+                    placeholder="Repeat password" 
+                    class="w-full pl-9 pr-9 py-2.5 rounded-2xl border border-gray-200 text-xs focus:outline-none focus:border-kutir-green" 
+                    required 
+                  />
+                  <i class="fa-solid fa-lock absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
+                  <button type="button" onclick="togglePasswordVisibility('signup-confirm-password', this)" class="absolute right-2.5 top-1/2 -translate-y-1/2 text-gray-400 text-xs p-1">
+                    <i class="fa-regular fa-eye"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Password strength indicator bar -->
+            <div class="space-y-1">
+              <div class="w-full h-1.5 bg-gray-200 rounded-full overflow-hidden">
+                <div id="password-strength-bar" class="h-full w-0 bg-rose-500 transition-all duration-300"></div>
+              </div>
+              <p id="password-strength-text" class="text-[10px] text-gray-400 font-medium">Use letters and numbers for a strong password</p>
+            </div>
+
+            <!-- Initial Delivery Address -->
+            <div>
+              <label class="block text-xs font-bold text-gray-700 mb-1">Delivery Address (Optional)</label>
+              <input 
+                type="text" 
+                id="signup-address" 
+                placeholder="House, Road, Area, Dhaka" 
+                class="w-full px-3.5 py-2.5 rounded-2xl border border-gray-200 text-xs focus:outline-none focus:border-kutir-green" 
+              />
+            </div>
+
+            <!-- Terms agreement -->
+            <div class="pt-1">
+              <label class="flex items-start gap-2 cursor-pointer text-xs text-gray-600">
+                <input type="checkbox" id="signup-terms" required class="mt-0.5 rounded text-kutir-green focus:ring-kutir-green" />
+                <span>I agree to Kutir Mart's <a href="#" class="text-kutir-green font-semibold underline">Terms of Service</a> and <a href="#" class="text-kutir-green font-semibold underline">Privacy Policy</a>.</span>
+              </label>
+            </div>
+
+            <!-- Submit CTA -->
+            <button type="submit" class="w-full py-3.5 rounded-full bg-kutir-green hover:bg-black text-white font-bold text-xs tracking-wide transition shadow-lg flex items-center justify-center gap-2 mt-2">
+              <i class="fa-solid fa-user-plus text-[11px]"></i>
+              <span>Create Kutir Account</span>
+            </button>
+          </form>
+
+          <!-- Bottom Switch Link -->
+          <p class="text-center text-xs text-gray-500 mt-6">
+            Already have an account? 
+            <button onclick="switchAuthTab('signin')" class="font-bold text-kutir-green hover:underline ml-1">Sign In</button>
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ================= FORGOT PASSWORD MODAL ================= -->
+  <div id="forgot-password-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
+    <div onclick="closeForgotPasswordModal()" class="fixed inset-0 bg-black/60 backdrop-blur-xs"></div>
+    <div class="relative bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl z-10">
+      <button onclick="closeForgotPasswordModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-500">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="w-12 h-12 rounded-2xl bg-kutir-mint text-kutir-green flex items-center justify-center text-xl mb-4">
+        <i class="fa-solid fa-key"></i>
+      </div>
+
+      <h3 class="text-xl font-black text-kutir-charcoal">Reset your password</h3>
+      <p class="text-xs text-gray-500 mt-1">Enter your registered email address and we'll send you an instant reset verification link.</p>
+
+      <form onsubmit="handleForgotPasswordSubmit(event)" class="space-y-4 mt-6">
+        <div>
+          <label class="block text-xs font-bold text-gray-700 mb-1">Email Address</label>
+          <input type="email" id="forgot-email" placeholder="name@example.com" class="w-full p-3 rounded-2xl border border-gray-200 text-xs focus:ring-1 focus:ring-kutir-green" required />
+        </div>
+
+        <button type="submit" class="w-full py-3 bg-kutir-green hover:bg-black text-white rounded-full font-bold text-xs transition shadow-md">
+          Send Reset Instructions
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+    <!-- ================= MASTER FOOTER (MUSE SHOPCART 5-COLUMN) ================= -->
+  <footer class="bg-white border-t border-gray-200 pt-16 pb-12 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 pb-12 border-b border-gray-100">
+        <!-- Col 1: Brand Info -->
+        <div class="lg:col-span-2 space-y-4">
+          <a href="index.html" class="flex items-center gap-2.5">
+            <div class="w-8 h-8 rounded-xl bg-kutir-green flex items-center justify-center text-white text-base">
+              <i class="fa-solid fa-bag-shopping"></i>
+            </div>
+            <span class="text-lg font-extrabold tracking-tight text-kutir-charcoal">
+              KUTIR <span class="text-kutir-green font-normal">MART</span>
+            </span>
+          </a>
+          <p class="text-gray-500 text-xs leading-relaxed max-w-sm">
+            Kutir Mart is your premier lifestyle and e-commerce destination connecting authentic artisan crafts, daily essentials, and consumer electronics.
+          </p>
+          <!-- Accepted Payments Icons -->
+          <div class="pt-2">
+            <p class="text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-2">Accepted Payments</p>
+            <div class="flex items-center gap-2 text-xl text-gray-400">
+              <i class="fa-brands fa-cc-visa hover:text-blue-600 transition" title="Visa"></i>
+              <i class="fa-brands fa-cc-mastercard hover:text-red-500 transition" title="Mastercard"></i>
+              <i class="fa-brands fa-cc-amex hover:text-sky-500 transition" title="AMEX"></i>
+              <span class="text-xs font-extrabold text-pink-600 px-1.5 py-0.5 bg-pink-50 rounded">bKash</span>
+              <span class="text-xs font-extrabold text-orange-600 px-1.5 py-0.5 bg-orange-50 rounded">Nagad</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Col 2: Department -->
+        <div>
+          <h5 class="font-bold text-sm text-kutir-charcoal mb-3">Department</h5>
+          <ul class="space-y-2 text-gray-500">
+            <li><a href="shop.html?category=tech" class="hover:text-kutir-green transition">Fashion & Tech</a></li>
+            <li><a href="shop.html?category=books" class="hover:text-kutir-green transition">Education & Books</a></li>
+            <li><a href="shop.html?category=furniture" class="hover:text-kutir-green transition">Home Furniture</a></li>
+            <li><a href="shop.html?category=sneakers" class="hover:text-kutir-green transition">Sneakers & Sports</a></li>
+            <li><a href="shop.html?category=travel" class="hover:text-kutir-green transition">Travel & Luggage</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: About Us -->
+        <div>
+          <h5 class="font-bold text-sm text-kutir-charcoal mb-3">About Us</h5>
+          <ul class="space-y-2 text-gray-500">
+            <li><a href="about.html" class="hover:text-kutir-green transition">Our Heritage</a></li>
+            <li><a href="about.html" class="hover:text-kutir-green transition">Artisan Community</a></li>
+            <li><a href="about.html" class="hover:text-kutir-green transition">Careers</a></li>
+            <li><a href="about.html" class="hover:text-kutir-green transition">Sustainability</a></li>
+            <li><a href="blog.html" class="hover:text-kutir-green transition">Press & Media</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Services -->
+        <div>
+          <h5 class="font-bold text-sm text-kutir-charcoal mb-3">Services</h5>
+          <ul class="space-y-2 text-gray-500">
+            <li><a href="shop.html?deal=true" class="hover:text-kutir-green transition">Gift Cards & Deals</a></li>
+            <li><a href="shop.html" class="hover:text-kutir-green transition">Catalog Explorer</a></li>
+            <li><a href="javascript:void(0)" onclick="window.kutirTracking ? window.kutirTracking.open() : window.location.href='index.html'" class="hover:text-kutir-green transition">Order Tracking</a></li>
+            <li><a href="contact.html" class="hover:text-kutir-green transition">Store Pickup</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 5: Help & Support -->
+        <div>
+          <h5 class="font-bold text-sm text-kutir-charcoal mb-3">Help & Support</h5>
+          <ul class="space-y-2 text-gray-500">
+            <li><a href="contact.html" class="hover:text-kutir-green transition">Kutir Help Center</a></li>
+            <li><a href="contact.html" class="hover:text-kutir-green transition">Returns & Refunds</a></li>
+            <li><a href="javascript:void(0)" onclick="window.kutirTracking ? window.kutirTracking.open() : window.location.href='index.html'" class="hover:text-kutir-green transition">Track Package</a></li>
+            <li><a href="contact.html" class="hover:text-kutir-green transition">Contact Us</a></li>
+            <li><a href="contact.html" class="hover:text-kutir-green transition">Security Safety</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Copyright Bar -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-gray-400">
+        <p>&copy; 2026 KUTIR MART. Designed in style of Muse Shopcart. All rights reserved.</p>
+        <div class="flex items-center gap-6">
+          <a href="about.html" class="hover:text-kutir-green transition">Terms of Service</a>
+          <a href="about.html" class="hover:text-kutir-green transition">Privacy Policy</a>
+          <a href="admin.html" class="font-bold text-kutir-green hover:underline transition">Admin Console</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ================= SCRIPTS ================= -->
+  <script src="js/store.js"></script>
+  <script>
+    // URL param tab detection (?mode=signup or ?mode=login)
+    window.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const mode = urlParams.get('mode');
+      if (mode === 'signup' || mode === 'register') {
+        switchAuthTab('signup');
+      } else {
+        switchAuthTab('signin');
+      }
+
+      // If user is already logged in, show status
+      if (window.kutirStore.isAuthenticated()) {
+        const user = window.kutirStore.getCurrentUser();
+        showAlert(`You are already logged in as <strong>${user.name}</strong> (${user.role})`, 'info');
+      }
+    });
+
+    function switchAuthTab(tab) {
+      const tabSignIn = document.getElementById('auth-tab-signin');
+      const tabSignUp = document.getElementById('auth-tab-signup');
+      const secSignIn = document.getElementById('signin-section');
+      const secSignUp = document.getElementById('signup-section');
+      hideAlert();
+
+      if (tab === 'signin') {
+        tabSignIn.className = 'flex-1 py-2 rounded-full font-bold text-xs bg-kutir-green text-white shadow-xs transition';
+        tabSignUp.className = 'flex-1 py-2 rounded-full font-semibold text-xs text-gray-600 hover:text-kutir-charcoal transition';
+        secSignIn.classList.remove('hidden');
+        secSignUp.classList.add('hidden');
+      } else {
+        tabSignUp.className = 'flex-1 py-2 rounded-full font-bold text-xs bg-kutir-green text-white shadow-xs transition';
+        tabSignIn.className = 'flex-1 py-2 rounded-full font-semibold text-xs text-gray-600 hover:text-kutir-charcoal transition';
+        secSignUp.classList.remove('hidden');
+        secSignIn.classList.add('hidden');
+      }
+    }
+
+    function togglePasswordVisibility(inputId, btn) {
+      const input = document.getElementById(inputId);
+      if (!input) return;
+      if (input.type === 'password') {
+        input.type = 'text';
+        btn.innerHTML = '<i class="fa-regular fa-eye-slash"></i>';
+      } else {
+        input.type = 'password';
+        btn.innerHTML = '<i class="fa-regular fa-eye"></i>';
+      }
+    }
+
+    function fillDemoCredentials(role) {
+      if (role === 'admin') {
+        document.getElementById('signin-identifier').value = 'admin@kutirmart.com';
+        document.getElementById('signin-password').value = 'admin123';
+        showAlert('Filled credentials for Admin Console (admin@kutirmart.com)', 'info');
+      } else {
+        document.getElementById('signin-identifier').value = 'jerry@kutirmart.com';
+        document.getElementById('signin-password').value = 'password123';
+        showAlert('Filled credentials for Customer (jerry@kutirmart.com)', 'info');
+      }
+    }
+
+    function checkPasswordStrength(val) {
+      const bar = document.getElementById('password-strength-bar');
+      const text = document.getElementById('password-strength-text');
+      if (!bar || !text) return;
+
+      if (!val) {
+        bar.style.width = '0%';
+        text.textContent = 'Use letters and numbers for a strong password';
+        return;
+      }
+
+      let score = 0;
+      if (val.length >= 6) score++;
+      if (/[A-Z]/.test(val)) score++;
+      if (/[0-9]/.test(val)) score++;
+      if (/[^A-Za-z0-9]/.test(val)) score++;
+
+      if (score <= 1) {
+        bar.style.width = '25%';
+        bar.className = 'h-full bg-rose-500 transition-all duration-300';
+        text.textContent = 'Weak password';
+      } else if (score === 2) {
+        bar.style.width = '50%';
+        bar.className = 'h-full bg-amber-500 transition-all duration-300';
+        text.textContent = 'Medium password';
+      } else if (score === 3) {
+        bar.style.width = '75%';
+        bar.className = 'h-full bg-blue-500 transition-all duration-300';
+        text.textContent = 'Good password';
+      } else {
+        bar.style.width = '100%';
+        bar.className = 'h-full bg-emerald-500 transition-all duration-300';
+        text.textContent = 'Strong password!';
+      }
+    }
+
+    function handleSignInSubmit(e) {
+      e.preventDefault();
+      const identifier = document.getElementById('signin-identifier').value.trim();
+      const password = document.getElementById('signin-password').value;
+
+      const result = window.kutirStore.login(identifier, password);
+      if (!result.success) {
+        showAlert(result.message, 'error');
+        return;
+      }
+
+      showAlert(`Welcome back, ${result.user.name}! Redirecting...`, 'success');
+
+      setTimeout(() => {
+        if (result.user.role === 'admin') {
+          window.location.href = 'admin.html';
+        } else {
+          window.location.href = 'index.html';
+        }
+      }, 1000);
+    }
+
+    function handleSignUpSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('signup-name').value.trim();
+      const email = document.getElementById('signup-email').value.trim();
+      const phone = document.getElementById('signup-phone').value.trim();
+      const password = document.getElementById('signup-password').value;
+      const confirmPassword = document.getElementById('signup-confirm-password').value;
+      const address = document.getElementById('signup-address').value.trim();
+
+      if (password.length < 6) {
+        showAlert('Password must be at least 6 characters long.', 'error');
+        return;
+      }
+
+      if (password !== confirmPassword) {
+        showAlert('Passwords do not match. Please verify.', 'error');
+        return;
+      }
+
+      const result = window.kutirStore.register({
+        name,
+        email,
+        phone,
+        password,
+        address
+      });
+
+      if (!result.success) {
+        showAlert(result.message, 'error');
+        return;
+      }
+
+      showAlert(`Account created successfully! Welcome to Kutir Mart, ${result.user.name}.`, 'success');
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 1200);
+    }
+
+    function handleSocialLogin(provider) {
+      showAlert(`Connecting with ${provider}... Signed in successfully!`, 'success');
+      // Set customer session
+      window.kutirStore.login('jerry@kutirmart.com', 'password123');
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 1000);
+    }
+
+    function openForgotPasswordModal() {
+      document.getElementById('forgot-password-modal').classList.remove('hidden');
+    }
+
+    function closeForgotPasswordModal() {
+      document.getElementById('forgot-password-modal').classList.add('hidden');
+    }
+
+    function handleForgotPasswordSubmit(e) {
+      e.preventDefault();
+      const email = document.getElementById('forgot-email').value.trim();
+      closeForgotPasswordModal();
+      showAlert(`A password reset link has been dispatched to ${email}. (Demo: your password is password123)`, 'info');
+    }
+
+    function showAlert(message, type = 'info') {
+      const box = document.getElementById('auth-alert');
+      const text = document.getElementById('auth-alert-text');
+      const icon = document.getElementById('auth-alert-icon');
+      if (!box || !text) return;
+
+      text.innerHTML = message;
+      box.classList.remove('hidden', 'bg-rose-50', 'text-rose-800', 'border-rose-200', 'bg-emerald-50', 'text-emerald-800', 'border-emerald-200', 'bg-blue-50', 'text-blue-800', 'border-blue-200');
+
+      if (type === 'error') {
+        box.classList.add('bg-rose-50', 'text-rose-800', 'border', 'border-rose-200');
+        icon.className = 'fa-solid fa-triangle-exclamation text-rose-600 text-base';
+      } else if (type === 'success') {
+        box.classList.add('bg-emerald-50', 'text-emerald-800', 'border', 'border-emerald-200');
+        icon.className = 'fa-solid fa-circle-check text-emerald-600 text-base';
+      } else {
+        box.classList.add('bg-blue-50', 'text-blue-800', 'border', 'border-blue-200');
+        icon.className = 'fa-solid fa-circle-info text-blue-600 text-base';
+      }
+    }
+
+    function hideAlert() {
+      const box = document.getElementById('auth-alert');
+      if (box) box.classList.add('hidden');
+    }
+  </script>
+</body>
+</html>
